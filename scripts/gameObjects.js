@@ -13,7 +13,7 @@ export const buildings = {
     hidreletrica: {name: "usina hidrelétrica", price: 30, polution: 20, life: 25, metalIncome: 10, workerIncome: 5, pontoCientifico: 1, deck: "prefeitura"},
     usinaNuclear: {name: "usina nuclear", price: 50, polution: 10, life: 30, metalIncome: 15, workerIncome: 10, pontoCientifico: 1, deck: "prefeitura"},
     casa: {name: "casa", price: 2, polution: 1, life: 3, metalIncome: 0, workerIncome: 0, pontoCientifico: 0, deck: "recursos humanos"},
-    praca: {name: "praça", price: 3, polution: -10, life: 2, metalIncome: 0, workerIncome: 0, pontoCientifico: 0, deck: "recursos humanos"},
+    praça: {name: "praça", price: 3, polution: -10, life: 2, metalIncome: 0, workerIncome: 0, pontoCientifico: 0, deck: "recursos humanos"},
     restaurante: {name: "restaurante", price: 5, polution: 1, life: 5, metalIncome: 0, workerIncome: 2, pontoCientifico: 0, deck: "recursos humanos"},
     teatro: {name: "teatro", price: 8, polution: 2, life: 10, metalIncome: 0, workerIncome: 4, pontoCientifico: 0, deck: "recursos humanos"},
     escola: {name: "escola", price: 11, polution: 2, life: 14, metalIncome: 0, workerIncome: 5, pontoCientifico: 0, deck: "recursos humanos"},

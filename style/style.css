@@ -35,3 +35,16 @@ footer {
 footer a {
     font-weight: bolder;
 }
+
+#deck-el p {
+    text-align: center;
+    background-color: #f9e98b;
+    padding: 10px 20px;
+    max-width: 300px;
+    margin-bottom: 3px;
+    margin-top: 0;
+    border: #f9e98b 1px solid;
+    border-radius: 5px;
+    font-weight: bold;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}

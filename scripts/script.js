@@ -24,7 +24,6 @@ const newGameBtn = document.getElementById("new-game-btn")
 const restartBtn = document.getElementById("restart-btn")
 const pointsAreaEl = document.getElementById("points-section")
 const incomesAreaEl = document.getElementById("incomes-section")
-const buildInputValue = document.getElementById("build-input-el")
 const buildSection = document.getElementById("build-section")
 const endRoundSection = document.getElementById("end-round-section")
 
@@ -35,10 +34,17 @@ const endRoundSection = document.getElementById("end-round-section")
 function newGame() {
     setValues()
 
-    // show game structure  
-
     //show building input field
-    
+    const buildInputValue = document.createElement("select")
+    buildInputValue.id = "build-input-el"
+    buildSection.appendChild(buildInputValue)
+    for (let i = 0; i < buildingNumber; i++) {
+        let buildkey = buildingNames[i]
+        let buildOption = buildings[buildkey].name
+        let buildOptionEl = document.createElement("option")
+        buildOptionEl.textContent = `${buildOption}`
+        buildInputValue.appendChild(buildOptionEl)
+    }
 
     //show build button
     const constructBtn = document.createElement("button")
@@ -46,8 +52,6 @@ function newGame() {
     constructBtn.id = "construct-btn"
     constructBtn.addEventListener("click", construct)
     buildSection.appendChild(constructBtn)
-
-
 
     //show botão encerrar rodada
     const endRoundBtn = document.createElement("button")
@@ -62,6 +66,7 @@ function restart() {
     pointsAreaEl.innerHTML = " "
     incomesAreaEl.innerHTML = " "
     endRoundSection.innerHTML = " "
+    buildSection.innerHTML = " "
     round = 0
     prefeituraCurrentMetalResource = characters.prefeitura.inicialMetalResource
     prefeituraCurrentWorkerRosource = characters.prefeitura.inicialWorkerResource
@@ -72,14 +77,19 @@ function restart() {
 }
 
 function construct() {
-    let building = buildInputValue.value
-    for(let i = 0; i < buildingNumber; i++) {
-        if (building === buildingNames[i]) {
-            polutionPoints += buildings[building].polution
-            lifeQuality += buildings[building].life
-            sciencePoints += buildings[building].pontoCientifico
+    let building = document.getElementById("build-input-el").value
+
+    for (let i = 0; i < buildingNumber; i++) {
+        let key = buildingNames[i]
+        if (buildings[key].name === building) {
+            polutionPoints += buildings[key].polution
+            lifeQuality += buildings[key].life
+            sciencePoints += buildings[key].pontoCientifico
         }
     }
+
+    
+
     setValues()
 
     
@@ -98,12 +108,14 @@ function setValues() {
     pointsAreaEl.innerHTML = " "
     incomesAreaEl.innerHTML = " "
     pointsAreaEl.innerHTML += `
+        <h2>Índices da Partida</h2>
         <p>Rodada Atual: ${round}</p>
         <p>Pontos de Qualidade de Vida: ${lifeQuality}</p>
         <p>Pontos de Poluição: ${polutionPoints}</p>
         <p>Pontos Científicos: ${sciencePoints}</p>
     `
     incomesAreaEl.innerHTML += `
+        <h2>Saldo Total</2>
         <h3>Prefeitura: Recursos Atuais</h3>
         <p>Metais: ${prefeituraCurrentMetalResource} créditos</p>
         <p>Mão de Obra: ${prefeituraCurrentWorkerRosource} créditos</p>
@@ -115,10 +127,11 @@ function setValues() {
         <h3>Diretores de Recursos Finaceiros: Recursos Atuais</h3>
         <p>Metais: ${dfCurrentMetalResource} créditos</p>
         <p>Mão de Obra: ${dfCurrentWorkerResource} créditos</p>
+
+        <h2>Rendimentos da Próxima Rodada</h2>
     `
 }
 
 //GAME PROCEDURE
 newGameBtn.addEventListener("click", newGame)
 restartBtn.addEventListener("click", restart)
-constructBtn.addEventListener("click", construct)
