@@ -18,8 +18,7 @@ function render(deck, place) {
         let build = buildings[buildkey]
         if (build.deck === deck) {
             place.innerHTML += `<p>${build.name}</p>`
-        }
-        
+        }    
     }
 }
 

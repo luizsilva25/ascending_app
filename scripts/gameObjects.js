@@ -5,7 +5,7 @@ export const buildings = {
     porto: {name: "porto", price: 9, polution: 8, life: 10, metalIncome: 4, workerIncome: 2, pontoCientifico: 0, deck: "prefeitura"},
     banco: {name: "banco", price: 5, polution: 5, life: 0, metalIncome: 2, workerIncome: 0, pontoCientifico: 0, deck: "prefeitura"},
     parqueNatural: {name: "parque natural", price: 12, polution: -12, life: 20, metalIncome: 0, workerIncome: 0, pontoCientifico: 0, deck: "prefeitura"},
-    parqueMaritimo: {name: "parque maritimo", price: 12, polution: -12, life: 20, metalIncome: 0, workerIncome: 0, pontoCientifico: 0, deck: "prefeitura"},
+    parqueMaritimo: {name: "parque marítimo", price: 12, polution: -12, life: 20, metalIncome: 0, workerIncome: 0, pontoCientifico: 0, deck: "prefeitura"},
     aeroporto: {name: "aeroporto", price: 12, polution: 12, life: 20, metalIncome: 5, workerIncome: 2, pontoCientifico: 0, deck: "prefeitura"},
     centralEsgoto: {name: "central de tratamento de lixo e esgoto", price: 5, polution: -20, life: 10, metalIncome: 1, workerIncome: 1, pontoCientifico: 0, deck: "prefeitura"},
     parqueEolico: {name: "parque eólico", price: 30, polution: 10, life: 30, metalIncome: 10, workerIncome: 5, pontoCientifico: 1, deck: "prefeitura"},
@@ -36,4 +36,11 @@ export const buildings = {
     centralInovação: {name: "central de inovação tecnológica", price: 16, polution: 15, life: 0, metalIncome: 8, workerIncome: 0, pontoCientifico: 1, deck: "diretores financeiros"},
     mineradora: {name: "mineradora", price: 30, polution: 20, life: 0, metalIncome: 15, workerIncome: 0, pontoCientifico: 0, deck: "diretores financeiros"},
     pocoPetroleo: {name: "poço de petróleo", price: 50, polution: 40, life: 0, metalIncome: 25, workerIncome: 0, pontoCientifico: 0, deck: "diretores financeiros"}    
+}
+
+
+export const characters = {
+    prefeitura: {name: "prefeitura", inicialMetalResource: 50, inicialWorkerResource: 25},
+    rh: {name: "Diretores de Recursos Humanos", inicialMetalResource: 25, inicialWorkerResource: 15},
+    df: {name: "Diretores de Recursos Financeiros", inicialMetalResource: 25, inicialWorkerResource: 15}
 }

@@ -1,35 +1,124 @@
-import { buildings } from "./gameObjects.js"
 //GAME ELEMENTS
+import { buildings } from "./gameObjects.js"
+import { characters } from "./gameObjects.js"
 
 
-//VARIABLES
+
+//GOBLAL VARIABLES
+const maxRounds = 10
+let round = 0
+let lifeQuality = 0
+let polutionPoints = 0
+let sciencePoints = 0
+const buildingNames = Object.keys(buildings)
+const buildingNumber = Object.keys(buildings).length
+let prefeituraCurrentMetalResource = characters.prefeitura.inicialMetalResource
+let prefeituraCurrentWorkerRosource = characters.prefeitura.inicialWorkerResource
+let rhCurrentMetalResource = characters.rh.inicialMetalResource
+let rhCurrentWorkerResource = characters.rh.inicialWorkerResource
+let dfCurrentMetalResource = characters.df.inicialMetalResource
+let dfCurrentWorkerResource = characters.df.inicialWorkerResource
 
 //DOM ELEMENTS
 const newGameBtn = document.getElementById("new-game-btn")
-const menuBtns = document.getElementById("menu-btns")
 const restartBtn = document.getElementById("restart-btn")
-const testArea = document.getElementById("teste-area")
+const pointsAreaEl = document.getElementById("points-section")
+const incomesAreaEl = document.getElementById("incomes-section")
+const buildInputValue = document.getElementById("build-input-el")
+const buildSection = document.getElementById("build-section")
+const endRoundSection = document.getElementById("end-round-section")
+
 
 
 //FUNCTIONS
+
 function newGame() {
-    let titulo = buildings.casa.name
-    let preco = buildings.casa.price
-    let deck = buildings.casa.deck
-    testArea.innerHTML += `<p>Título: ${titulo}</p><p>Preço: ${preco}</p>`
-    alert("newGame called")
+    setValues()
+
+    // show game structure  
+
+    //show building input field
+    
+
+    //show build button
+    const constructBtn = document.createElement("button")
+    constructBtn.textContent = "CONSTRUIR"
+    constructBtn.id = "construct-btn"
+    constructBtn.addEventListener("click", construct)
+    buildSection.appendChild(constructBtn)
+
+
+
+    //show botão encerrar rodada
+    const endRoundBtn = document.createElement("button")
+    endRoundBtn.textContent = "ENCERRAR RODADA"
+    endRoundBtn.id = "end-round-btn"
+    endRoundBtn.addEventListener("click", endRound)
+    endRoundSection.appendChild(endRoundBtn)
+
 }
 
 function restart() {
-    //limpar tela
-    testArea.innerHTML = ""
-    newGame()
+    pointsAreaEl.innerHTML = " "
+    incomesAreaEl.innerHTML = " "
+    endRoundSection.innerHTML = " "
+    round = 0
+    prefeituraCurrentMetalResource = characters.prefeitura.inicialMetalResource
+    prefeituraCurrentWorkerRosource = characters.prefeitura.inicialWorkerResource
+    rhCurrentMetalResource = characters.rh.inicialMetalResource
+    rhCurrentWorkerResource = characters.rh.inicialWorkerResource
+    dfCurrentMetalResource = characters.df.inicialMetalResource
+    dfCurrentWorkerResource = characters.df.inicialWorkerResource
 }
 
-function teste() {
-    alert("clicked")
+function construct() {
+    let building = buildInputValue.value
+    for(let i = 0; i < buildingNumber; i++) {
+        if (building === buildingNames[i]) {
+            polutionPoints += buildings[building].polution
+            lifeQuality += buildings[building].life
+            sciencePoints += buildings[building].pontoCientifico
+        }
+    }
+    setValues()
+
+    
+}
+
+function endRound() {
+    round = round + 1
+    if (round === maxRounds) {
+        endGame()
+    }
+    setValues()
+}
+
+
+function setValues() {
+    pointsAreaEl.innerHTML = " "
+    incomesAreaEl.innerHTML = " "
+    pointsAreaEl.innerHTML += `
+        <p>Rodada Atual: ${round}</p>
+        <p>Pontos de Qualidade de Vida: ${lifeQuality}</p>
+        <p>Pontos de Poluição: ${polutionPoints}</p>
+        <p>Pontos Científicos: ${sciencePoints}</p>
+    `
+    incomesAreaEl.innerHTML += `
+        <h3>Prefeitura: Recursos Atuais</h3>
+        <p>Metais: ${prefeituraCurrentMetalResource} créditos</p>
+        <p>Mão de Obra: ${prefeituraCurrentWorkerRosource} créditos</p>
+
+        <h3>Diretores de Recursos Humanos: Recursos Atuais</h3>
+        <p>Metais: ${rhCurrentMetalResource} créditos</p>
+        <p>Mão de Obra: ${rhCurrentWorkerResource} créditos</p>
+
+        <h3>Diretores de Recursos Finaceiros: Recursos Atuais</h3>
+        <p>Metais: ${dfCurrentMetalResource} créditos</p>
+        <p>Mão de Obra: ${dfCurrentWorkerResource} créditos</p>
+    `
 }
 
 //GAME PROCEDURE
 newGameBtn.addEventListener("click", newGame)
 restartBtn.addEventListener("click", restart)
+constructBtn.addEventListener("click", construct)
