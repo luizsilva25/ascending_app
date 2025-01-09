@@ -1,3 +1,37 @@
 .logo {
     box-sizing: 30px;
 }
+
+body {
+    background-color: #81c3c9;
+    text-align: center;
+}
+
+#logo {
+    max-width: 320px;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+button {
+    background-color: #f9e98b;
+    border: 1px #f9e98b;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: bolder;
+    padding: 10px 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-radius: 3px;
+}
+
+footer {
+    text-align: center;
+}
+
+footer a {
+    font-weight: bolder;
+}
