@@ -5,8 +5,8 @@ import { characters } from "./gameObjects.js"
 
 
 //GOBLAL VARIABLES
-const maxRounds = 10
-let round = 0
+const maxRounds = 11
+let round = 1
 let lifeQuality = 0
 let polutionPoints = 0
 let sciencePoints = 0
@@ -18,6 +18,12 @@ let rhCurrentMetalResource = characters.rh.inicialMetalResource
 let rhCurrentWorkerResource = characters.rh.inicialWorkerResource
 let dfCurrentMetalResource = characters.df.inicialMetalResource
 let dfCurrentWorkerResource = characters.df.inicialWorkerResource
+let prefeituraIncomeMetalResource = 0
+let prefeituraIncomeWorkerResource = 0
+let rhIncomeMetalResource = 0
+let rhIncomeWorkerResource = 0
+let dfIncomeMetalResource =0
+let dfIncomeWorkerResource = 0
 
 //DOM ELEMENTS
 const newGameBtn = document.getElementById("new-game-btn")
@@ -85,14 +91,43 @@ function construct() {
             polutionPoints += buildings[key].polution
             lifeQuality += buildings[key].life
             sciencePoints += buildings[key].pontoCientifico
+            incomeCalculator(buildings[key])
         }
     }
-
-    
 
     setValues()
 
     
+}
+
+function incomeCalculator(building) {
+    const player = building.deck
+    if (player === "prefeitura") {
+        prefeituraCurrentMetalResource -= building.price 
+        prefeituraIncomeMetalResource += building.metalIncome
+        prefeituraIncomeWorkerResource += building.workerIncome
+    } else if (player === "recursos humanos") {
+        rhCurrentMetalResource -= building.price 
+        rhIncomeMetalResource += building.metalIncome
+        rhIncomeWorkerResource += building.workerIncome
+    } else if (player === "diretores financeiros") {
+        dfCurrentMetalResource -= building.price 
+        dfIncomeMetalResource += building.metalIncome
+        dfCurrentWorkerResource += building.workerIncome
+    } else {
+        alert("Erro ao construir. Relate o problema aos desenvolvedores.")
+    }
+}
+
+function paymentTime() {
+    prefeituraCurrentMetalResource += prefeituraIncomeMetalResource
+    prefeituraCurrentWorkerRosource += prefeituraIncomeWorkerResource
+
+    rhCurrentMetalResource += rhIncomeMetalResource
+    rhCurrentWorkerResource += rhIncomeWorkerResource
+
+    dfCurrentMetalResource += dfIncomeMetalResource
+    dfCurrentWorkerResource += dfIncomeWorkerResource
 }
 
 function endRound() {
@@ -100,6 +135,9 @@ function endRound() {
     if (round === maxRounds) {
         endGame()
     }
+
+    paymentTime()
+
     setValues()
 }
 
@@ -116,19 +154,33 @@ function setValues() {
     `
     incomesAreaEl.innerHTML += `
         <h2>Saldo Total</2>
-        <h3>Prefeitura: Recursos Atuais</h3>
+        
+        <h3>Prefeitura</h3>
         <p>Metais: ${prefeituraCurrentMetalResource} créditos</p>
         <p>Mão de Obra: ${prefeituraCurrentWorkerRosource} créditos</p>
 
-        <h3>Diretores de Recursos Humanos: Recursos Atuais</h3>
+        <h3>Diretores de Recursos Humanos</h3>
         <p>Metais: ${rhCurrentMetalResource} créditos</p>
         <p>Mão de Obra: ${rhCurrentWorkerResource} créditos</p>
 
-        <h3>Diretores de Recursos Finaceiros: Recursos Atuais</h3>
+        <h3>Diretores de Recursos Finaceiros</h3>
         <p>Metais: ${dfCurrentMetalResource} créditos</p>
         <p>Mão de Obra: ${dfCurrentWorkerResource} créditos</p>
 
+
         <h2>Rendimentos da Próxima Rodada</h2>
+        
+        <h3>Prefeitura</h3>
+        <p>Metais: ${prefeituraIncomeMetalResource} créditos</p>
+        <p>Mão de Obra: ${prefeituraIncomeWorkerResource} créditos</p>
+        
+        <h3>Diretores de Recursos Humanos</h3>
+        <p>Metais: ${rhIncomeMetalResource} créditos</p>
+        <p>Mão de Obra: ${rhIncomeWorkerResource} créditos</p>
+
+        <h3>Diretores de Recursos Finaceiros</h3>
+        <p>Metais: ${dfIncomeMetalResource} créditos</p>
+        <p>Mão de Obra: ${dfIncomeWorkerResource} créditos</p>
     `
 }
 
