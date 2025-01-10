@@ -6,6 +6,7 @@ import { characters } from "./gameObjects.js"
 
 //GOBLAL VARIABLES
 const maxRounds = 11
+let gameOn = false
 let round = 1
 let lifeQuality = 0
 let polutionPoints = 0
@@ -38,6 +39,8 @@ const endRoundSection = document.getElementById("end-round-section")
 //FUNCTIONS
 
 function newGame() {
+    gameOn = true
+    restart()
     setValues()
 
     //show building input field
@@ -73,13 +76,22 @@ function restart() {
     incomesAreaEl.innerHTML = " "
     endRoundSection.innerHTML = " "
     buildSection.innerHTML = " "
-    round = 0
+    round = 1
+    lifeQuality = 0
+    polutionPoints = 0
+    sciencePoints = 0
     prefeituraCurrentMetalResource = characters.prefeitura.inicialMetalResource
     prefeituraCurrentWorkerRosource = characters.prefeitura.inicialWorkerResource
     rhCurrentMetalResource = characters.rh.inicialMetalResource
     rhCurrentWorkerResource = characters.rh.inicialWorkerResource
     dfCurrentMetalResource = characters.df.inicialMetalResource
     dfCurrentWorkerResource = characters.df.inicialWorkerResource
+    prefeituraIncomeMetalResource = 0
+    prefeituraIncomeWorkerResource = 0
+    rhIncomeMetalResource = 0
+    rhIncomeWorkerResource = 0
+    dfIncomeMetalResource =0
+    dfIncomeWorkerResource = 0
 }
 
 function construct() {
@@ -88,16 +100,45 @@ function construct() {
     for (let i = 0; i < buildingNumber; i++) {
         let key = buildingNames[i]
         if (buildings[key].name === building) {
-            polutionPoints += buildings[key].polution
-            lifeQuality += buildings[key].life
-            sciencePoints += buildings[key].pontoCientifico
-            incomeCalculator(buildings[key])
+            if (checkResources(buildings[key])) {
+                polutionPoints += buildings[key].polution
+                lifeQuality += buildings[key].life
+                sciencePoints += buildings[key].pontoCientifico
+                incomeCalculator(buildings[key])
+            } else {
+                alert("Saldo Insuficiente")
+            }
         }
     }
 
     setValues()
 
     
+}
+
+function checkResources(building) {
+    let player = building.deck
+    if (player === "prefeitura") {
+        if (prefeituraCurrentMetalResource >= building.price) {
+            return true
+        } else {
+            return false
+        }
+    } else if (player === "recursos humanos") {
+        if (rhCurrentMetalResource >= building.price) {
+            return true
+        } else {
+            return false
+        }
+    } else if (player === "diretores financeiros") {
+        if (dfCurrentMetalResource >= building.price) {
+            return true
+        } else {
+            return false
+        }
+    } else {
+        alert("Erro 01: Player não encontrado. Relate o problema aos desenvolvedores.")
+    }
 }
 
 function incomeCalculator(building) {
@@ -115,7 +156,7 @@ function incomeCalculator(building) {
         dfIncomeMetalResource += building.metalIncome
         dfCurrentWorkerResource += building.workerIncome
     } else {
-        alert("Erro ao construir. Relate o problema aos desenvolvedores.")
+        alert("Erro 02: Player não encontrado. Relate o problema aos desenvolvedores.")
     }
 }
 
@@ -134,13 +175,15 @@ function endRound() {
     round = round + 1
     if (round === maxRounds) {
         endGame()
+        gameOn = false
     }
-
-    paymentTime()
-
-    setValues()
+    
+    if (gameOn === true) {
+        paymentTime()
+        setValues()
+    }
+    
 }
-
 
 function setValues() {
     pointsAreaEl.innerHTML = " "
@@ -184,6 +227,18 @@ function setValues() {
     `
 }
 
+function endGame() {
+    // mostrar tela final, apenas com os indicadores da partida
+    pointsAreaEl.innerHTML = ""
+    incomesAreaEl.innerHTML = ""
+    buildSection.innerHTML = ""
+    endRoundSection.innerHTML = ""
+
+    pointsAreaEl.innerHTML = `<p>Em Construção...</p>`
+
+}
+
 //GAME PROCEDURE
-newGameBtn.addEventListener("click", newGame)
-restartBtn.addEventListener("click", restart)
+if (newGameBtn){
+    newGameBtn.addEventListener("click", newGame)
+}
