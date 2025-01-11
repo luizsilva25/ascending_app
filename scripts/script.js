@@ -23,8 +23,9 @@ let prefeituraIncomeMetalResource = 0
 let prefeituraIncomeWorkerResource = 0
 let rhIncomeMetalResource = 0
 let rhIncomeWorkerResource = 0
-let dfIncomeMetalResource =0
+let dfIncomeMetalResource = 0
 let dfIncomeWorkerResource = 0
+
 
 //DOM ELEMENTS
 const newGameBtn = document.getElementById("new-game-btn")
@@ -71,11 +72,15 @@ function newGame() {
 
 }
 
-function restart() {
+function cleanScreen() {
     pointsAreaEl.innerHTML = " "
     incomesAreaEl.innerHTML = " "
     endRoundSection.innerHTML = " "
     buildSection.innerHTML = " "
+}
+
+function restart() {
+    cleanScreen()
     round = 1
     lifeQuality = 0
     polutionPoints = 0
@@ -104,6 +109,7 @@ function construct() {
                 polutionPoints += buildings[key].polution
                 lifeQuality += buildings[key].life
                 sciencePoints += buildings[key].pontoCientifico
+                buildings[key].onField += 1
                 incomeCalculator(buildings[key])
             } else {
                 alert("Saldo Insuficiente")
@@ -229,12 +235,38 @@ function setValues() {
 
 function endGame() {
     // mostrar tela final, apenas com os indicadores da partida
-    pointsAreaEl.innerHTML = ""
-    incomesAreaEl.innerHTML = ""
-    buildSection.innerHTML = ""
-    endRoundSection.innerHTML = ""
+    cleanScreen()
 
-    pointsAreaEl.innerHTML = `<p>Em Construção...</p>`
+    //Show title
+    const finalDataTitle = document.createElement("h1")
+    finalDataTitle.textContent = "DADOS FINAIS"
+    pointsAreaEl.appendChild(finalDataTitle)
+
+    // Pontos gerais (poluição, qualidade de vida, científicos)
+    pointsAreaEl.innerHTML += `<h2>ÍNDICES GERAIS DA CIDADE</h2>
+    <p>Pontos de Qualidade de Vida: ${lifeQuality}</p>
+    <p>Pontos de Poluição: ${polutionPoints}</p>
+    <p>Pontos Científicos: ${sciencePoints}</p>`
+
+    // Incomes gerais
+    const finalMetalProduction = prefeituraIncomeMetalResource + rhIncomeMetalResource + dfIncomeMetalResource
+    const finalWorkerProduction = prefeituraIncomeWorkerResource + rhIncomeWorkerResource + dfIncomeWorkerResource
+    incomesAreaEl.innerHTML += "<h2>RENDIMENTOS GERAIS DA CIDADE</h2>"
+    incomesAreaEl.innerHTML += `<p>Produção de metais: ${finalMetalProduction} créditos por rodada</p> <p>Produção de Mão de Obra: ${finalWorkerProduction} créditos por rodada</p>`
+
+
+    // Lista de construções e número delas em campo
+    const buildingFinalList = document.createElement("section")
+    buildingFinalList.id = "building-final-list-section"
+    buildingFinalList.innerHTML += "<h2>CONSTRUÇÕES EM CAMPO</h2>"
+
+    for (let i = 0; i < buildingNumber; i++) {
+        let key = buildingNames[i]
+        buildingFinalList.innerHTML += `<p>${buildings[key].name}: ${buildings[key].onField}</p>`
+        buildSection.appendChild(buildingFinalList)
+    }
+
+    
 
 }
 
