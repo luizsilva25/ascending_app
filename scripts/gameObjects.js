@@ -1,4 +1,4 @@
-export const buildings = {
+export let buildings = {
     estrada: 
         {name: "estrada", 
         price: 9, polution: 6, 
@@ -7,7 +7,15 @@ export const buildings = {
         workerIncome: 4,
         pontoCientifico: 0,
         deck: "prefeitura",
-        onField: 0},
+        onField: {
+            lvlOne: 0,
+            lvlTwo: 0,
+            lvlThree: 0,
+            lvlFour: 0,
+            lvlFive: 0,
+        },
+        total: 0
+    },
 
     ponte: 
         {name: "ponte",
@@ -18,7 +26,15 @@ export const buildings = {
         workerIncome: 3,
         pontoCientifico: 0,
         deck: "prefeitura",
-        onField: 0},
+        onField: {
+            lvlOne: 0,
+            lvlTwo: 0,
+            lvlThree: 0,
+            lvlFour: 0,
+            lvlFive: 0,
+        },
+        total: 0
+    },
 
     ferrovia: 
         {name: "ferrovia",
@@ -29,7 +45,15 @@ export const buildings = {
         workerIncome: 6,
         pontoCientifico: 0,
         deck: "prefeitura",
-        onField: 0},
+        onField: {
+            lvlOne: 0,
+            lvlTwo: 0,
+            lvlThree: 0,
+            lvlFour: 0,
+            lvlFive: 0,
+        },
+        total: 0
+    },
 
     porto: 
         {name: "porto",
@@ -40,7 +64,15 @@ export const buildings = {
         workerIncome: 2,
         pontoCientifico: 0,
         deck: "prefeitura",
-        onField: 0},
+        onField: {
+            lvlOne: 0,
+            lvlTwo: 0,
+            lvlThree: 0,
+            lvlFour: 0,
+            lvlFive: 0,
+        },
+        total: 0
+    },
 
     banco: 
         {name: "banco",
@@ -51,7 +83,15 @@ export const buildings = {
         workerIncome: 0, 
         pontoCientifico: 0, 
         deck: "prefeitura",
-        onField: 0},
+        onField: {
+            lvlOne: 0,
+            lvlTwo: 0,
+            lvlThree: 0,
+            lvlFour: 0,
+            lvlFive: 0,
+        },
+        total: 0
+    },
 
     parqueNatural: 
         {name: "parque natural",
@@ -62,7 +102,15 @@ export const buildings = {
         workerIncome: 0, 
         pontoCientifico: 0, 
         deck: "prefeitura",
-        onField: 0},
+        onField: {
+            lvlOne: 0,
+            lvlTwo: 0,
+            lvlThree: 0,
+            lvlFour: 0,
+            lvlFive: 0,
+        },
+        total: 0
+    },
 
     parqueMaritimo: 
         {name: "parque marítimo",
@@ -73,7 +121,15 @@ export const buildings = {
         workerIncome: 0, 
         pontoCientifico: 0, 
         deck: "prefeitura",
-        onField: 0},
+        onField: {
+            lvlOne: 0,
+            lvlTwo: 0,
+            lvlThree: 0,
+            lvlFour: 0,
+            lvlFive: 0,
+        },
+        total: 0
+    },
 
     aeroporto: 
         {name: "aeroporto",
@@ -84,7 +140,15 @@ export const buildings = {
         workerIncome: 2, 
         pontoCientifico: 0, 
         deck: "prefeitura",
-        onField: 0},
+        onField: {
+            lvlOne: 0,
+            lvlTwo: 0,
+            lvlThree: 0,
+            lvlFour: 0,
+            lvlFive: 0,
+        },
+        total: 0
+    },
 
     centralEsgoto: 
         {name: "central de tratamento de lixo e esgoto",
@@ -95,7 +159,15 @@ export const buildings = {
         workerIncome: 1, 
         pontoCientifico: 0, 
         deck: "prefeitura",
-        onField: 0},
+        onField: {
+            lvlOne: 0,
+            lvlTwo: 0,
+            lvlThree: 0,
+            lvlFour: 0,
+            lvlFive: 0,
+        },
+        total: 0
+    },
 
     parqueEolico: 
         {name: "parque eólico", 
@@ -106,7 +178,15 @@ export const buildings = {
         workerIncome: 5, 
         pontoCientifico: 1, 
         deck: "prefeitura",
-        onField: 0},
+        onField: {
+            lvlOne: 0,
+            lvlTwo: 0,
+            lvlThree: 0,
+            lvlFour: 0,
+            lvlFive: 0,
+        },
+        total: 0
+    },
 
     parqueSolar: 
         {name: "parque solar", 
@@ -117,7 +197,15 @@ export const buildings = {
         workerIncome: 5, 
         pontoCientifico: 1, 
         deck: "prefeitura",
-        onField: 0},
+        onField: {
+            lvlOne: 0,
+            lvlTwo: 0,
+            lvlThree: 0,
+            lvlFour: 0,
+            lvlFive: 0,
+        },
+        total: 0
+    },
         
     hidreletrica: 
         {name: "usina hidrelétrica", 
@@ -128,7 +216,15 @@ export const buildings = {
         workerIncome: 5, 
         pontoCientifico: 1, 
         deck: "prefeitura",
-        onField: 0},
+        onField: {
+            lvlOne: 0,
+            lvlTwo: 0,
+            lvlThree: 0,
+            lvlFour: 0,
+            lvlFive: 0,
+        },
+        total: 0
+    },
 
     usinaNuclear: 
         {name: "usina nuclear", 
@@ -139,7 +235,15 @@ export const buildings = {
         workerIncome: 10, 
         pontoCientifico: 1, 
         deck: "prefeitura",
-        onField: 0},
+        onField: {
+            lvlOne: 0,
+            lvlTwo: 0,
+            lvlThree: 0,
+            lvlFour: 0,
+            lvlFive: 0,
+        },
+        total: 0
+    },
 
     casa: 
         {name: "casa", 
@@ -150,7 +254,15 @@ export const buildings = {
         workerIncome: 0, 
         pontoCientifico: 0, 
         deck: "recursos humanos",
-        onField: 0},
+        onField: {
+            lvlOne: 0,
+            lvlTwo: 0,
+            lvlThree: 0,
+            lvlFour: 0,
+            lvlFive: 0,
+        },
+        total: 0
+    },
 
     praça: 
         {name: "praça", 
@@ -161,18 +273,34 @@ export const buildings = {
         workerIncome: 0, 
         pontoCientifico: 0, 
         deck: "recursos humanos",
-        onField: 0},
+        onField: {
+            lvlOne: 0,
+            lvlTwo: 0,
+            lvlThree: 0,
+            lvlFour: 0,
+            lvlFive: 0,
+        },
+        total: 0
+    },
 
     restaurante: 
         {name: "restaurante", 
         price: 5, 
         polution: 1, 
-        ife: 5, 
+        life: 5, 
         metalIncome: 0, 
         workerIncome: 2, 
         pontoCientifico: 0, 
         deck: "recursos humanos",
-        onField: 0},
+        onField: {
+            lvlOne: 0,
+            lvlTwo: 0,
+            lvlThree: 0,
+            lvlFour: 0,
+            lvlFive: 0,
+        },
+        total: 0
+    },
 
     teatro: 
         {name: "teatro",
@@ -183,7 +311,15 @@ export const buildings = {
         workerIncome: 4, 
         pontoCientifico: 0, 
         deck: "recursos humanos",
-        onField: 0},
+        onField: {
+            lvlOne: 0,
+            lvlTwo: 0,
+            lvlThree: 0,
+            lvlFour: 0,
+            lvlFive: 0,
+        },
+        total: 0
+    },
 
     escola: 
         {name: "escola", 
@@ -194,7 +330,15 @@ export const buildings = {
         workerIncome: 5, 
         pontoCientifico: 0, 
         deck: "recursos humanos",
-        onField: 0},
+        onField: {
+            lvlOne: 0,
+            lvlTwo: 0,
+            lvlThree: 0,
+            lvlFour: 0,
+            lvlFive: 0,
+        },
+        total: 0
+    },
 
     creche: 
         {name: "creche", 
@@ -205,7 +349,15 @@ export const buildings = {
         workerIncome: 5, 
         pontoCientifico: 0, 
         deck: "recursos humanos",
-        onField: 0},
+        onField: {
+            lvlOne: 0,
+            lvlTwo: 0,
+            lvlThree: 0,
+            lvlFour: 0,
+            lvlFive: 0,
+        },
+        total: 0
+    },
         
     postoSaude: 
         {name: "posto de saúde", 
@@ -216,7 +368,15 @@ export const buildings = {
         workerIncome: 4, 
         pontoCientifico: 0, 
         deck: "recursos humanos",
-        onField: 0},
+        onField: {
+            lvlOne: 0,
+            lvlTwo: 0,
+            lvlThree: 0,
+            lvlFour: 0,
+            lvlFive: 0,
+        },
+        total: 0
+    },
 
     cinema: 
         {name: "cinema", 
@@ -227,7 +387,15 @@ export const buildings = {
         workerIncome: 6, 
         pontoCientifico: 0, 
         deck: "recursos humanos",
-        onField: 0},
+        onField: {
+            lvlOne: 0,
+            lvlTwo: 0,
+            lvlThree: 0,
+            lvlFour: 0,
+            lvlFive: 0,
+        },
+        total: 0
+    },
 
     laboratorio: 
         {name: "laboratório de pesquisa", 
@@ -238,7 +406,15 @@ export const buildings = {
         workerIncome: 8, 
         pontoCientifico: 1, 
         deck: "recursos humanos",
-        onField: 0},
+        onField: {
+            lvlOne: 0,
+            lvlTwo: 0,
+            lvlThree: 0,
+            lvlFour: 0,
+            lvlFive: 0,
+        },
+        total: 0
+    },
 
     universidade: 
         {name: "universidade", 
@@ -249,7 +425,15 @@ export const buildings = {
         workerIncome: 15, 
         pontoCientifico: 1, 
         deck: "recursos humanos",
-        onField: 0},
+        onField: {
+            lvlOne: 0,
+            lvlTwo: 0,
+            lvlThree: 0,
+            lvlFour: 0,
+            lvlFive: 0,
+        },
+        total: 0
+    },
 
     hospital: 
         {name: "hospital", 
@@ -260,7 +444,15 @@ export const buildings = {
         workerIncome: 15, 
         pontoCientifico: 0, 
         deck: "recursos humanos",
-        onField: 0},
+        onField: {
+            lvlOne: 0,
+            lvlTwo: 0,
+            lvlThree: 0,
+            lvlFour: 0,
+            lvlFive: 0,
+        },
+        total: 0
+    },
 
     apartamento: 
         {name: "apartamento", 
@@ -271,7 +463,15 @@ export const buildings = {
         workerIncome: 0, 
         pontoCientifico: 0, 
         deck: "recursos humanos",
-        onField: 0},
+        onField: {
+            lvlOne: 0,
+            lvlTwo: 0,
+            lvlThree: 0,
+            lvlFour: 0,
+            lvlFive: 0,
+        },
+        total: 0
+    },
 
     zonaPesca: 
         {name: "zona de pesca", 
@@ -282,7 +482,15 @@ export const buildings = {
         workerIncome: 0, 
         pontoCientifico: 0, 
         deck: "diretores financeiros",
-        onField: 0},
+        onField: {
+            lvlOne: 0,
+            lvlTwo: 0,
+            lvlThree: 0,
+            lvlFour: 0,
+            lvlFive: 0,
+        },
+        total: 0
+    },
 
     fazenda: 
         {name: "fazenda", 
@@ -293,7 +501,15 @@ export const buildings = {
         workerIncome: 0, 
         pontoCientifico: 0, 
         deck: "diretores financeiros",
-        onField: 0},
+        onField: {
+            lvlOne: 0,
+            lvlTwo: 0,
+            lvlThree: 0,
+            lvlFour: 0,
+            lvlFive: 0,
+        },
+        total: 0
+    },
 
     madeireira: 
         {name: "madeireira", 
@@ -304,7 +520,15 @@ export const buildings = {
         workerIncome: 0, 
         pontoCientifico: 0, 
         deck: "diretores financeiros",
-        onField: 0},
+        onField: {
+            lvlOne: 0,
+            lvlTwo: 0,
+            lvlThree: 0,
+            lvlFour: 0,
+            lvlFive: 0,
+        },
+        total: 0
+    },
 
     construtora: 
         {name: "construtora", 
@@ -315,7 +539,15 @@ export const buildings = {
         workerIncome: 0, 
         pontoCientifico: 0, 
         deck: "diretores financeiros",
-        onField: 0},
+        onField: {
+            lvlOne: 0,
+            lvlTwo: 0,
+            lvlThree: 0,
+            lvlFour: 0,
+            lvlFive: 0,
+        },
+        total: 0
+    },
 
     poloMetalurgico: 
         {name: "polo metalúrgico", 
@@ -326,7 +558,15 @@ export const buildings = {
         workerIncome: 0, 
         pontoCientifico: 0, 
         deck: "diretores financeiros",
-        onField: 0},
+        onField: {
+            lvlOne: 0,
+            lvlTwo: 0,
+            lvlThree: 0,
+            lvlFour: 0,
+            lvlFive: 0,
+        },
+        total: 0
+    },
 
     distribuidora: 
         {name: "distribuidora de energia", 
@@ -337,7 +577,15 @@ export const buildings = {
         workerIncome: 0, 
         pontoCientifico: 0, 
         deck: "diretores financeiros",
-        onField: 0},
+        onField: {
+            lvlOne: 0,
+            lvlTwo: 0,
+            lvlThree: 0,
+            lvlFour: 0,
+            lvlFive: 0,
+        },
+        total: 0
+    },
 
     poloAuto: 
         {name: "polo automobilístico", 
@@ -348,7 +596,15 @@ export const buildings = {
         workerIncome: 0, 
         pontoCientifico: 0, 
         deck: "diretores financeiros",
-        onField: 0},
+        onField: {
+            lvlOne: 0,
+            lvlTwo: 0,
+            lvlThree: 0,
+            lvlFour: 0,
+            lvlFive: 0,
+        },
+        total: 0
+    },
 
     poloMarinho: 
         {name: "polo marinho", 
@@ -359,7 +615,15 @@ export const buildings = {
         workerIncome: 0, 
         pontoCientifico: 0, 
         deck: "diretores financeiros",
-        onField: 0},
+        onField: {
+            lvlOne: 0,
+            lvlTwo: 0,
+            lvlThree: 0,
+            lvlFour: 0,
+            lvlFive: 0,
+        },
+        total: 0
+    },
 
     poloFarmaceutico: 
         {name: "polo farmaceutico", 
@@ -370,7 +634,15 @@ export const buildings = {
         workerIncome: 0, 
         pontoCientifico: 1, 
         deck: "diretores financeiros",
-        onField: 0},
+        onField: {
+            lvlOne: 0,
+            lvlTwo: 0,
+            lvlThree: 0,
+            lvlFour: 0,
+            lvlFive: 0,
+        },
+        total: 0
+    },
 
     centralInovação: 
         {name: "central de inovação tecnológica", 
@@ -381,7 +653,15 @@ export const buildings = {
         workerIncome: 0, 
         pontoCientifico: 1, 
         deck: "diretores financeiros",
-        onField: 0},
+        onField: {
+            lvlOne: 0,
+            lvlTwo: 0,
+            lvlThree: 0,
+            lvlFour: 0,
+            lvlFive: 0,
+        },
+        total: 0
+    },
 
     mineradora: 
         {name: "mineradora", 
@@ -392,7 +672,15 @@ export const buildings = {
         workerIncome: 0, 
         pontoCientifico: 0, 
         deck: "diretores financeiros",
-        onField: 0},
+        onField: {
+            lvlOne: 0,
+            lvlTwo: 0,
+            lvlThree: 0,
+            lvlFour: 0,
+            lvlFive: 0,
+        },
+        total: 0
+    },
 
     pocoPetroleo: 
         {name: "poço de petróleo", 
@@ -403,7 +691,15 @@ export const buildings = {
         workerIncome: 0, 
         pontoCientifico: 0, 
         deck: "diretores financeiros",
-        onField: 0}    
+        onField: {
+            lvlOne: 0,
+            lvlTwo: 0,
+            lvlThree: 0,
+            lvlFour: 0,
+            lvlFive: 0,
+        },
+        total: 0
+    }    
 }
 
 

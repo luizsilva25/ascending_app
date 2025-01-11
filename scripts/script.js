@@ -25,6 +25,7 @@ let rhIncomeMetalResource = 0
 let rhIncomeWorkerResource = 0
 let dfIncomeMetalResource = 0
 let dfIncomeWorkerResource = 0
+let constructionsOnField = []
 
 
 //DOM ELEMENTS
@@ -34,6 +35,7 @@ const pointsAreaEl = document.getElementById("points-section")
 const incomesAreaEl = document.getElementById("incomes-section")
 const buildSection = document.getElementById("build-section")
 const endRoundSection = document.getElementById("end-round-section")
+const buildingDisplayArea = document.getElementById("buildings-display-el")
 
 
 
@@ -77,6 +79,7 @@ function cleanScreen() {
     incomesAreaEl.innerHTML = " "
     endRoundSection.innerHTML = " "
     buildSection.innerHTML = " "
+    buildingDisplayArea.innerHTML = " "
 }
 
 function restart() {
@@ -95,8 +98,18 @@ function restart() {
     prefeituraIncomeWorkerResource = 0
     rhIncomeMetalResource = 0
     rhIncomeWorkerResource = 0
-    dfIncomeMetalResource =0
+    dfIncomeMetalResource = 0
     dfIncomeWorkerResource = 0
+    for (let i = 0; i < buildingNumber; i++) {
+        let key = buildingNames[i]
+        buildings[key].onField.lvlOne = 0
+        buildings[key].onField.lvlTwo = 0
+        buildings[key].onField.lvlThree = 0
+        buildings[key].onField.lvlFour = 0
+        buildings[key].onField.lvlFive = 0
+        buildings[key].total = 0
+    }
+    constructionsOnField = []
 }
 
 function construct() {
@@ -109,15 +122,19 @@ function construct() {
                 polutionPoints += buildings[key].polution
                 lifeQuality += buildings[key].life
                 sciencePoints += buildings[key].pontoCientifico
-                buildings[key].onField += 1
+                buildings[key].onField.lvlOne += 1
+                buildings[key].total += 1
                 incomeCalculator(buildings[key])
+                setValues()
+                addToBuildingDisplay(buildings[key])
             } else {
                 alert("Saldo Insuficiente")
             }
         }
     }
 
-    setValues()
+    
+
 
     
 }
@@ -262,12 +279,34 @@ function endGame() {
 
     for (let i = 0; i < buildingNumber; i++) {
         let key = buildingNames[i]
-        buildingFinalList.innerHTML += `<p>${buildings[key].name}: ${buildings[key].onField}</p>`
+        buildingFinalList.innerHTML += `<p>${buildings[key].name}: ${buildings[key].total}</p>`
         buildSection.appendChild(buildingFinalList)
     }
+}
+
+function addToBuildingDisplay(building) {
+    // criar um botão que representa cada construção em campo
+    let id = `${building.name}${building.total}`
+    let construction = document.createElement("div")
+    construction.id = id
+    construction.className = "construction-icon"
 
     
+    construction.innerHTML = `
+        <p>${building.name} nº${building.total}</p>
+        <img src="../imagens/2225617.png" style="max-width: 25px">
+       `
+    
+    constructionsOnField.push(construction)
+    
+    renderConstructionsOnField()
+    
+}
 
+function renderConstructionsOnField() {
+    for (let i = 0; i < constructionsOnField.length; i++) {
+        buildingDisplayArea.appendChild(constructionsOnField[i])
+    }
 }
 
 //GAME PROCEDURE
