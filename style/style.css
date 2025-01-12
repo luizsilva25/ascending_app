@@ -1,7 +1,14 @@
+* {
+    max-width: 400px;
+    margin: 0px;
+}
+
 body {
     background-color: #81c3c9;
     text-align: center;
-    max-width: 400px;
+    box-sizing: border-box;
+    border: 1px solid black;
+    width: 400px;
 }
 
 #logo {
@@ -33,6 +40,14 @@ footer a {
     font-weight: bolder;
 }
 
+#menu-btns {
+    display: flex;
+    margin: 5px 8px;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: baseline;
+}
+
 #deck-el p {
     text-align: center;
     background-color: #f9e98b;
@@ -46,10 +61,72 @@ footer a {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
+
+/* POINTS SECTION */
+
+#points-section h2 {
+    background-color: red;
+    
+}
+
+#points-section table{
+    text-align: center;
+    box-sizing: border-box;
+    margin-bottom: 6px;
+}
+
+#points-section th {
+    background-color: #f9e98b;
+    border-radius: 2px;
+    padding: 1px 2px;
+}
+
+#points-section td {
+    font-weight: bolder;
+    color: black;
+    padding: 3px 0px;
+}
+
+/*INCOMES SECTION */
+#incomes-section h2{
+    margin-top: 8px;
+    background-color: red;
+    border: 1px solid black;
+    
+}
+
+#incomes-section table {
+    box-sizing: border-box;
+    
+}
+
+#incomes-section td {
+    border-top: 1px solid black;
+    
+}
+
+
+/* BUILDING AREA */
+
 #buildings-display-el {
     border: 3px, solid, darkslategrey;
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
+}
+
+.construction-icon {
+    background-color: blanchedalmond;
+    border: 1px solid black;
+    padding: 5px;
+}
+
+.construction-icon * {
+    margin: 0px;
+}
+
+.construction-icon button{
+    background-color: darkslategray;
+    color: white;
 }
 

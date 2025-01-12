@@ -333,40 +333,69 @@ function setValues() {
     incomesAreaEl.innerHTML = " "
     pointsAreaEl.innerHTML += `
         <h2>Índices da Partida</h2>
-        <p>Rodada Atual: ${round}</p>
-        <p>Pontos de Qualidade de Vida: ${lifeQuality}</p>
-        <p>Pontos de Poluição: ${polutionPoints}</p>
-        <p>Pontos Científicos: ${sciencePoints}</p>
+        <table id="indices-da-partida">
+            <tr>
+                <th>Rodada Atual</th>
+                <th>Pontos de Qualidade de Vida</th>
+                <th>Pontos de Poluição</th>
+                <th>Pontos Científicos</th>
+            </tr>
+            <tr>
+                <td>${round}</td>
+                <td>${lifeQuality}</td>
+                <td>${polutionPoints}</td>
+                <td>${sciencePoints}</td>
+            </tr>
+        </table>
     `
     incomesAreaEl.innerHTML += `
-        <h2>Saldo Total</2>
-        
-        <h3>Prefeitura</h3>
-        <p>Metais: ${prefeituraCurrentMetalResource} créditos</p>
-        <p>Mão de Obra: ${prefeituraCurrentWorkerRosource} créditos</p>
+        <h2>Saldo Total</h2>
 
-        <h3>Diretores de Recursos Humanos</h3>
-        <p>Metais: ${rhCurrentMetalResource} créditos</p>
-        <p>Mão de Obra: ${rhCurrentWorkerResource} créditos</p>
-
-        <h3>Diretores de Recursos Finaceiros</h3>
-        <p>Metais: ${dfCurrentMetalResource} créditos</p>
-        <p>Mão de Obra: ${dfCurrentWorkerResource} créditos</p>
+        <table>
+            <tr>
+                <th> </th>
+                <th>Prefeitura</th>
+                <th>Diretores de Recursos Humanos</th>
+                <th>Diretores de Recursos Finaceiros</th>
+            </tr>
+            <tr>
+                <td>Metais</td>
+                <td>${prefeituraCurrentMetalResource} créditos</td>
+                <td>${rhCurrentMetalResource} créditos</td>
+                <td>${dfCurrentMetalResource} créditos</td>
+            </tr>
+            <tr>
+                <td>Mão de Obra</td>
+                <td>${prefeituraCurrentWorkerRosource} créditos</td>
+                <td>${rhCurrentWorkerResource} créditos</td>
+                <td>${dfCurrentWorkerResource} créditos</td>
+            </tr>
+        </table>
 
 
         <h2>Rendimentos da Próxima Rodada</h2>
-        
-        <h3>Prefeitura</h3>
-        <p>Metais: ${prefeituraIncomeMetalResource} créditos</p>
-        <p>Mão de Obra: ${prefeituraIncomeWorkerResource} créditos</p>
-        
-        <h3>Diretores de Recursos Humanos</h3>
-        <p>Metais: ${rhIncomeMetalResource} créditos</p>
-        <p>Mão de Obra: ${rhIncomeWorkerResource} créditos</p>
 
-        <h3>Diretores de Recursos Finaceiros</h3>
-        <p>Metais: ${dfIncomeMetalResource} créditos</p>
-        <p>Mão de Obra: ${dfIncomeWorkerResource} créditos</p>
+        <table>
+            <tr>
+                <th> </th>
+                <th>Prefeitura</th>
+                <th>Diretores de Recursos Humanos</th>
+                <th>Diretores de Recursos Finaceiros</th>
+            </tr>
+            <tr>
+                <td>Metais</td>
+                <td>${prefeituraIncomeMetalResource} créditos</td>
+                <td>${rhIncomeMetalResource} créditos</td>
+                <td>${dfIncomeMetalResource} créditos</td>
+            </tr>
+            <tr>
+                <td>Mão de Obra</td>
+                <td>${prefeituraIncomeWorkerResource} créditos</td>
+                <td>${rhIncomeWorkerResource} créditos</td>
+                <td>${dfIncomeWorkerResource} créditos</td>
+            </tr>
+
+        </table>
     `
 }
 
