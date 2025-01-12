@@ -6,10 +6,14 @@ import { characters } from "./gameObjects.js"
 
 //GOBLAL VARIABLES
 const maxRounds = 11
-const lvlTwoBenefits = 3
-const lvlThreeBenefits = 5
-const lvlFourBenefits = 8
-const lvlFiveBenefits = 10
+const lvlTwoBenefits = 2
+const lvlThreeBenefits = 3
+const lvlFourBenefits = 3
+const lvlFiveBenefits = 5
+const lvlTwoCost = 5
+const lvlThreeCost = 10
+const lvlFourCost = 15
+const lvlFiveCost = 20
 let gameOn = false
 let round = 1
 let lifeQuality = 0
@@ -498,6 +502,7 @@ function upgrade(building, identification) {
                     if (building.workerIncome > 0) {
                         prefeituraIncomeWorkerResource += lvlTwoBenefits
                     }
+                    prefeituraCurrentWorkerRosource -= lvlTwoCost
                     setValues()
                     buildingDisplayArea.innerHTML += " "
                     renderConstructionsOnField()
@@ -509,6 +514,7 @@ function upgrade(building, identification) {
                     if (building.workerIncome > 0) {
                         prefeituraIncomeWorkerResource += lvlThreeBenefits
                     }
+                    prefeituraCurrentWorkerRosource -= lvlThreeCost
                     setValues()
                     buildingDisplayArea.innerHTML += " "
                     renderConstructionsOnField()
@@ -520,6 +526,7 @@ function upgrade(building, identification) {
                     if (building.workerIncome > 0) {
                         prefeituraIncomeWorkerResource += lvlFourBenefits
                     }
+                    prefeituraCurrentWorkerRosource -= lvlFourCost
                     setValues()
                     buildingDisplayArea.innerHTML += " "
                     renderConstructionsOnField()
@@ -531,6 +538,7 @@ function upgrade(building, identification) {
                     if (building.workerIncome > 0) {
                         prefeituraIncomeWorkerResource += lvlFiveBenefits
                     }
+                    prefeituraCurrentWorkerRosource -= lvlFiveCost
                     setValues()
                     buildingDisplayArea.innerHTML += " "
                     renderConstructionsOnField()
@@ -544,6 +552,7 @@ function upgrade(building, identification) {
                     if (building.workerIncome > 0) {
                         rhIncomeWorkerResource += lvlTwoBenefits
                     }
+                    rhCurrentWorkerResource -= lvlTwoCost
                     setValues()
                     buildingDisplayArea.innerHTML += " "
                     renderConstructionsOnField()
@@ -555,6 +564,7 @@ function upgrade(building, identification) {
                     if (building.workerIncome > 0) {
                         rhIncomeWorkerResource += lvlThreeBenefits
                     }
+                    rhCurrentWorkerResource -= lvlThreeCost
                     setValues()
                     buildingDisplayArea.innerHTML += " "
                     renderConstructionsOnField()
@@ -566,6 +576,7 @@ function upgrade(building, identification) {
                     if (building.workerIncome > 0) {
                         rhIncomeWorkerResource += lvlFourBenefits
                     }
+                    rhCurrentWorkerResource -= lvlFourCost
                     setValues()
                     buildingDisplayArea.innerHTML += " "
                     renderConstructionsOnField()
@@ -577,6 +588,7 @@ function upgrade(building, identification) {
                     if (building.workerIncome > 0) {
                         rhIncomeWorkerResource += lvlFiveBenefits
                     }
+                    rhCurrentWorkerResource -= lvlFiveCost
                     setValues()
                     buildingDisplayArea.innerHTML += " "
                     renderConstructionsOnField()
@@ -590,6 +602,7 @@ function upgrade(building, identification) {
                     if (building.workerIncome > 0) {
                         dfIncomeWorkerResource += lvlTwoBenefits
                     }
+                    dfCurrentWorkerResource -= lvlTwoCost
                     setValues()
                     buildingDisplayArea.innerHTML += " "
                     renderConstructionsOnField()
@@ -601,6 +614,7 @@ function upgrade(building, identification) {
                     if (building.workerIncome > 0) {
                         dfIncomeWorkerResource += lvlThreeBenefits
                     }
+                    dfCurrentWorkerResource -= lvlThreeCost
                     setValues()
                     buildingDisplayArea.innerHTML += " "
                     renderConstructionsOnField()
@@ -612,6 +626,7 @@ function upgrade(building, identification) {
                     if (building.workerIncome > 0) {
                         dfIncomeWorkerResource += lvlFourBenefits
                     }
+                    dfCurrentWorkerResource -= lvlFourCost
                     setValues()
                     buildingDisplayArea.innerHTML += " "
                     renderConstructionsOnField()
@@ -623,6 +638,7 @@ function upgrade(building, identification) {
                     if (building.workerIncome > 0) {
                         dfIncomeWorkerResource += lvlFiveBenefits
                     }
+                    dfCurrentWorkerResource -= lvlFiveCost
                     setValues()
                     buildingDisplayArea.innerHTML += " "
                     renderConstructionsOnField()
