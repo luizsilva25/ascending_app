@@ -21,6 +21,8 @@ let polutionPoints = 0
 let sciencePoints = 0
 const buildingNames = Object.keys(buildings)
 const buildingNumber = Object.keys(buildings).length
+const charactersNames = Object.keys(characters)
+const charactersNumber = Object.keys(characters).length
 let prefeituraCurrentMetalResource = characters.prefeitura.inicialMetalResource
 let prefeituraCurrentWorkerRosource = characters.prefeitura.inicialWorkerResource
 let rhCurrentMetalResource = characters.rh.inicialMetalResource
@@ -44,6 +46,7 @@ const incomesAreaEl = document.getElementById("incomes-section")
 const buildSection = document.getElementById("build-section")
 const endRoundSection = document.getElementById("end-round-section")
 const buildingDisplayArea = document.getElementById("buildings-display-el")
+const businessAreaEl = document.getElementById("business-area")
 
 
 
@@ -73,6 +76,9 @@ function newGame() {
     constructBtn.addEventListener("click", construct)
     buildSection.appendChild(constructBtn)
 
+    // botão realizar troca
+    showExchangeButton()
+    
     //show botão encerrar rodada
     const endRoundBtn = document.createElement("button")
     endRoundBtn.textContent = "ENCERRAR RODADA"
@@ -655,6 +661,168 @@ function upgrade(building, identification) {
     
 }
 
+function exchange() {
+    businessAreaEl.innerHTML = " "
+    //show business area
+        // field doador
+        let p = document.createElement("p")
+        p.innerText = "de: "
+        businessAreaEl.appendChild(p)
+        
+        const donorInputEl = document.createElement("select")
+        donorInputEl.id = "donor-input-el"
+        businessAreaEl.appendChild(donorInputEl)
+        for (let i = 0; i < charactersNumber; i++) {
+            let characterKey = charactersNames[i]
+            let characterOption = characters[characterKey].name
+            let characterOptionEL = document.createElement("option")
+            characterOptionEL.textContent = `${characterOption}`
+            donorInputEl.appendChild(characterOptionEL)
+        }
+
+            // field quantidade
+        let t = document.createElement("p")
+        t.innerText = "envia: "
+        businessAreaEl.appendChild(t)
+        const quantidadeEl = document.createElement("input")
+        quantidadeEl.id = "quantidade-el"
+        businessAreaEl.appendChild(quantidadeEl)
+            
+            // field resource type
+        const resourceTypeEl = document.createElement("select")
+        resourceTypeEl.id = "resource-type-el"
+        businessAreaEl.appendChild(resourceTypeEl)
+        const workerOption = document.createElement("option")
+        workerOption.innerText = "Mão de Obra"
+        resourceTypeEl.appendChild(workerOption)
+        const metalOption = document.createElement("option")
+        metalOption.innerText = "Metais"
+        resourceTypeEl.appendChild(metalOption)
+
+            // field receptor
+        let d = document.createElement("p")
+        d.innerText = "para: "
+        businessAreaEl.appendChild(d)
+        const receptorInputEl = document.createElement("select")
+        receptorInputEl.id = "receptor-input-el"
+        businessAreaEl.appendChild(receptorInputEl)
+        for (let i = 0; i < charactersNumber; i++) {
+            let characterKey = charactersNames[i]
+            let characterOption = characters[characterKey].name
+            let characterOptionEL = document.createElement("option")
+            characterOptionEL.textContent = `${characterOption}`
+            receptorInputEl.appendChild(characterOptionEL)
+        }
+
+        
+            // send button
+        const enviarBtn = document.createElement("button")
+        enviarBtn.id = "enviar-button"
+        enviarBtn.innerText = "ENVIAR"
+        enviarBtn.addEventListener("click", function () {
+            alert("sending...")
+            sending(donorInputEl.value, receptorInputEl.value, quantidadeEl.value, resourceTypeEl.value)
+            businessAreaEl.innerHTML = " "
+            setValues()
+            showExchangeButton()
+        })
+        businessAreaEl.appendChild(enviarBtn)
+
+            // cancel button
+        const cancelBtn = document.createElement("button")
+        cancelBtn.id = "cancel-button"
+        cancelBtn.innerText = "CANCEL"
+        cancelBtn.addEventListener("click", function () {
+            businessAreaEl.innerHTML = " "
+            showExchangeButton()
+        })
+        businessAreaEl.appendChild(cancelBtn)
+
+
+    
+}
+
+function showExchangeButton() {
+    const realizarTrocaBtn = document.createElement("button")
+    realizarTrocaBtn.textContent = "REALIZAR TROCA"
+    realizarTrocaBtn.id ="realizar-troca-btn"
+    realizarTrocaBtn.addEventListener("click", exchange)
+    businessAreaEl.appendChild(realizarTrocaBtn)
+}
+
+function sending(donor, receptor, quantidade, resource) {
+    quantidade = parseInt(quantidade)
+    if (resource === "Metais") {
+        if (donor === "prefeitura") {
+            prefeituraCurrentMetalResource -= quantidade
+            if (receptor === "prefeitura") {
+                prefeituraCurrentMetalResource += quantidade
+            } else if (receptor === "Diretores de Recursos Humanos") {
+                rhCurrentMetalResource += quantidade
+            } else if (receptor === "Diretores de Recursos Financeiros") {
+                dfCurrentMetalResource += quantidade
+            }
+        } else if (donor === "Diretores de Recursos Humanos") {
+            rhCurrentMetalResource -= quantidade
+            if (receptor === "prefeitura") {
+                prefeituraCurrentMetalResource += quantidade
+            } else if (receptor === "Diretores de Recursos Humanos") {
+                rhCurrentMetalResource += quantidade
+            } else if (receptor === "Diretores de Recursos Financeiros") {
+                dfCurrentMetalResource += quantidade
+            }
+        } else if (donor === "Diretores de Recursos Financeiros") {
+            dfCurrentMetalResource -= quantidade
+            if (receptor === "prefeitura") {
+                prefeituraCurrentMetalResource += quantidade
+            } else if (receptor === "Diretores de Recursos Humanos") {
+                rhCurrentMetalResource += quantidade
+            } else if (receptor === "Diretores de Recursos Financeiros") {
+                dfCurrentMetalResource += quantidade
+            }
+        }
+    } else if (resource === "Mão de Obra") {
+        if (donor === "prefeitura") {
+            prefeituraCurrentWorkerRosource -= quantidade
+            if (receptor === "prefeitura") {
+                prefeituraCurrentWorkerResource += quantidade
+            } else if (receptor === "Diretores de Recursos Humanos") {
+                rhCurrentWorkerResource += quantidade
+            } else if (receptor === "Diretores de Recursos Financeiros") {
+                dfCurrentWorkerResource += quantidade
+            }
+        } else if (donor === "Diretores de Recursos Humanos") {
+            rhCurrentWorkerResource -= quantidade
+            if (receptor === "prefeitura") {
+                prefeituraCurrentWorkerRosource += quantidade
+            } else if (receptor === "Diretores de Recursos Humanos") {
+                rhCurrentWorkerResource += quantidade
+            } else if (receptor === "Diretores de Recursos Financeiros") {
+                dfCurrentWorkerResource += quantidade
+            }
+        } else if (donor === "Diretores de Recursos Financeiros") {
+            dfCurrentWorkerResource -= quantidade
+            if (receptor === "prefeitura") {
+                prefeituraCurrentWorkerRosource += quantidade
+            } else if (receptor === "Diretores de Recursos Humanos") {
+                rhCurrentWorkerResource += quantidade
+            } else if (receptor === "Diretores de Recursos Financeiros") {
+                dfCurrentWorkerResource += quantidade
+            }
+        }
+    } else {
+        alert("Error")
+    }
+    //
+
+    // find type of resource
+
+    // subtract from donor
+
+    // find receptor
+
+    // sum to receptor
+}
 
 //GAME PROCEDURE
 if (newGameBtn){
