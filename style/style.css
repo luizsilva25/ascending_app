@@ -7,8 +7,16 @@ body {
     background-color: #81c3c9;
     text-align: center;
     box-sizing: border-box;
-    border: 1px solid black;
     width: 400px;
+}
+
+footer {
+    background-color: rgb(19, 32, 32);
+    color: white;
+}
+
+footer a {
+    color: white;
 }
 
 #logo {
@@ -61,12 +69,20 @@ footer a {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
+.resource-icon {
+    width: 25px;
+}
+
 
 /* POINTS SECTION */
+#points-section {
+    padding: 0px 3px;
+}
 
 #points-section h2 {
-    background-color: red;
-    
+    margin-top: 8px;
+    border-top: 2px solid rgb(0, 0, 0);
+    padding-top: 5px;
 }
 
 #points-section table{
@@ -88,27 +104,56 @@ footer a {
 }
 
 /*INCOMES SECTION */
+#incomes-section {
+    margin-bottom: 10px;
+}
+
 #incomes-section h2{
     margin-top: 8px;
-    background-color: red;
-    border: 1px solid black;
-    
+    border-top: 2px solid rgb(0, 0, 0);
+    padding-top: 5px;
 }
 
 #incomes-section table {
     box-sizing: border-box;
+    width: 400px;
     
+}
+
+#incomes-section th {
+    padding: 4px 10px;
 }
 
 #incomes-section td {
     border-top: 1px solid black;
+    padding: 4px 10px;
     
 }
 
 
 /* BUILDING AREA */
 
+#build-section {
+    width: 90%;
+    margin: auto;
+    border: 1px solid black;
+}
+
+#build-input-el {
+    padding: 8px 10px;
+    text-align: center;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
 #buildings-display-el {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    padding: 3px;
+    width: 90%;
     border: 3px, solid, darkslategrey;
     display: flex;
     justify-content: space-evenly;
@@ -119,14 +164,40 @@ footer a {
     background-color: blanchedalmond;
     border: 1px solid black;
     padding: 5px;
+    margin: 2px;
 }
 
 .construction-icon * {
-    margin: 0px;
+    margin: auto;
 }
 
 .construction-icon button{
     background-color: darkslategray;
     color: white;
+}
+
+/*BUSINESS AREA*/
+
+#business-area {
+    width: 90%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 2px;
+    border: 1px solid black;
+    
+}
+
+#business-area input, select, p, button{
+    padding: 8px 10px;
+    text-align: center;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#business-area button {
+    margin-bottom: 10px;
 }
 

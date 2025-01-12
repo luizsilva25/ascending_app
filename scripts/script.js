@@ -355,20 +355,20 @@ function setValues() {
             <tr>
                 <th> </th>
                 <th>Prefeitura</th>
-                <th>Diretores de Recursos Humanos</th>
-                <th>Diretores de Recursos Finaceiros</th>
+                <th>Recursos Humanos</th>
+                <th>Recursos Finaceiros</th>
             </tr>
             <tr>
-                <td>Metais</td>
-                <td>${prefeituraCurrentMetalResource} créditos</td>
-                <td>${rhCurrentMetalResource} créditos</td>
-                <td>${dfCurrentMetalResource} créditos</td>
+                <td><img src="../imagens/metal.png" class="resource-icon" alt="Metal"></td>
+                <td>${prefeituraCurrentMetalResource}</td>
+                <td>${rhCurrentMetalResource}</td>
+                <td>${dfCurrentMetalResource}</td>
             </tr>
             <tr>
-                <td>Mão de Obra</td>
-                <td>${prefeituraCurrentWorkerRosource} créditos</td>
-                <td>${rhCurrentWorkerResource} créditos</td>
-                <td>${dfCurrentWorkerResource} créditos</td>
+                <td><img src="../imagens/worker.png" class="resource-icon" alt="worker"></td>
+                <td>${prefeituraCurrentWorkerRosource}</td>
+                <td>${rhCurrentWorkerResource}</td>
+                <td>${dfCurrentWorkerResource}</td>
             </tr>
         </table>
 
@@ -379,20 +379,20 @@ function setValues() {
             <tr>
                 <th> </th>
                 <th>Prefeitura</th>
-                <th>Diretores de Recursos Humanos</th>
-                <th>Diretores de Recursos Finaceiros</th>
+                <th>Recursos Humanos</th>
+                <th>Recursos Finaceiros</th>
             </tr>
             <tr>
-                <td>Metais</td>
-                <td>${prefeituraIncomeMetalResource} créditos</td>
-                <td>${rhIncomeMetalResource} créditos</td>
-                <td>${dfIncomeMetalResource} créditos</td>
+                <td><img src="../imagens/metal.png" class="resource-icon" alt="Metal"></td>
+                <td>${prefeituraIncomeMetalResource}</td>
+                <td>${rhIncomeMetalResource}</td>
+                <td>${dfIncomeMetalResource}</td>
             </tr>
             <tr>
-                <td>Mão de Obra</td>
-                <td>${prefeituraIncomeWorkerResource} créditos</td>
-                <td>${rhIncomeWorkerResource} créditos</td>
-                <td>${dfIncomeWorkerResource} créditos</td>
+                <td><img src="../imagens/worker.png" class="resource-icon" alt="worker"></td>
+                <td>${prefeituraIncomeWorkerResource}</td>
+                <td>${rhIncomeWorkerResource}</td>
+                <td>${dfIncomeWorkerResource}</td>
             </tr>
 
         </table>
@@ -695,9 +695,9 @@ function exchange() {
     businessAreaEl.innerHTML = " "
     //show business area
         // field doador
-        let p = document.createElement("p")
-        p.innerText = "de: "
-        businessAreaEl.appendChild(p)
+        //let p = document.createElement("p")
+        //p.innerText = "de: "
+        //businessAreaEl.appendChild(p)
         
         const donorInputEl = document.createElement("select")
         donorInputEl.id = "donor-input-el"
