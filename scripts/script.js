@@ -6,6 +6,10 @@ import { characters } from "./gameObjects.js"
 
 //GOBLAL VARIABLES
 const maxRounds = 11
+const lvlTwoBenefits = 3
+const lvlThreeBenefits = 5
+const lvlFourBenefits = 8
+const lvlFiveBenefits = 10
 let gameOn = false
 let round = 1
 let lifeQuality = 0
@@ -25,12 +29,12 @@ let rhIncomeMetalResource = 0
 let rhIncomeWorkerResource = 0
 let dfIncomeMetalResource = 0
 let dfIncomeWorkerResource = 0
-let constructionsOnField = []
+let constructionsOnFieldEl = []
+let clones = []
 
 
 //DOM ELEMENTS
 const newGameBtn = document.getElementById("new-game-btn")
-const restartBtn = document.getElementById("restart-btn")
 const pointsAreaEl = document.getElementById("points-section")
 const incomesAreaEl = document.getElementById("incomes-section")
 const buildSection = document.getElementById("build-section")
@@ -109,7 +113,8 @@ function restart() {
         buildings[key].onField.lvlFive = 0
         buildings[key].total = 0
     }
-    constructionsOnField = []
+    constructionsOnFieldEl = []
+    clones = []
 }
 
 function construct() {
@@ -124,9 +129,11 @@ function construct() {
                 sciencePoints += buildings[key].pontoCientifico
                 buildings[key].onField.lvlOne += 1
                 buildings[key].total += 1
+                let clone = cloneConstruction(buildings[key])
+                clones.push(clone)
                 incomeCalculator(buildings[key])
                 setValues()
-                addToBuildingDisplay(buildings[key])
+                addToBuildingDisplay(clone)
             } else {
                 alert("Saldo Insuficiente")
             }
@@ -161,6 +168,108 @@ function checkResources(building) {
         }
     } else {
         alert("Erro 01: Player não encontrado. Relate o problema aos desenvolvedores.")
+    }
+}
+
+function enoughWorkers(deck, lvl) {
+    if (deck === "prefeitura") {
+        if (lvl === 1) {
+           if (prefeituraCurrentWorkerRosource >= 5) {
+                return true
+           } else {
+                return false
+           }
+        } else if (lvl === 2) {
+            if (prefeituraCurrentWorkerRosource >= 10) {
+                return true
+            } else {
+                return false
+            }
+        } else if (lvl === 3) {
+            if (prefeituraCurrentWorkerRosource >= 15) {
+                return true
+            } else {
+                return false
+            }
+
+        } else if (lvl === 4) {
+            if (prefeituraCurrentMetalResource >= 20) {
+                return true
+            } else {
+                return false
+            }
+
+        } else {
+            alert("Nível máximo atingido")
+            return false
+        }
+
+    } else if (deck === "recursos humanos") {
+        if (lvl === 1) {
+            if (rhCurrentWorkerResource >= 5) {
+                 return true
+            } else {
+                 return false
+            }
+         } else if (lvl === 2) {
+             if (rhCurrentWorkerResource >= 10) {
+                 return true
+             } else {
+                 return false
+             }
+         } else if (lvl === 3) {
+             if (rhCurrentWorkerResource >= 15) {
+                 return true
+             } else {
+                 return false
+             }
+ 
+         } else if (lvl === 4) {
+             if (rhCurrentWorkerResource >= 20) {
+                 return true
+             } else {
+                 return false
+             }
+ 
+         } else {
+             alert("Nível máximo atingido")
+             return false
+         }
+
+    } else if (deck === "diretores financeiros") {
+        if (lvl === 1) {
+            if (dfCurrentWorkerResource >= 5) {
+                 return true
+            } else {
+                 return false
+            }
+         } else if (lvl === 2) {
+             if (dfCurrentWorkerResource >= 10) {
+                 return true
+             } else {
+                 return false
+             }
+         } else if (lvl === 3) {
+             if (dfCurrentWorkerResource >= 15) {
+                 return true
+             } else {
+                 return false
+             }
+ 
+         } else if (lvl === 4) {
+             if (dfCurrentWorkerResource >= 20) {
+                 return true
+             } else {
+                 return false
+             }
+ 
+         } else {
+             alert("Nível máximo atingido")
+             return false
+         }
+
+    } else {
+        alert("Error")
     }
 }
 
@@ -285,29 +394,251 @@ function endGame() {
 }
 
 function addToBuildingDisplay(building) {
-    // criar um botão que representa cada construção em campo
     let id = `${building.name}${building.total}`
+
+    building.identifier = id
+
     let construction = document.createElement("div")
     construction.id = id
     construction.className = "construction-icon"
 
-    
-    construction.innerHTML = `
-        <p>${building.name} nº${building.total}</p>
-        <img src="../imagens/2225617.png" style="max-width: 25px">
-       `
-    
-    constructionsOnField.push(construction)
+    let title = document.createElement("p")
+    title.textContent = building.name
+    construction.appendChild(title)
+
+    let level = document.createElement("p")
+    level.textContent = `Nível: ${building.level}`
+    construction.appendChild(level)
+
+    let upgradeBtn = document.createElement("button")
+    upgradeBtn.textContent = "MELHORAR"
+    upgradeBtn.addEventListener("click", function() {
+        if (confirm(`Deseja melhorar essa construção para o nível ${building.level + 1}?`)) {
+            upgrade(building, id)
+        }
+    })
+    construction.appendChild(upgradeBtn)
+        
+    constructionsOnFieldEl.push(construction)
     
     renderConstructionsOnField()
     
 }
 
 function renderConstructionsOnField() {
-    for (let i = 0; i < constructionsOnField.length; i++) {
-        buildingDisplayArea.appendChild(constructionsOnField[i])
+    for (let i = 0; i < constructionsOnFieldEl.length; i++) {
+        buildingDisplayArea.appendChild(constructionsOnFieldEl[i])
     }
 }
+
+function cloneConstruction(construction) {
+    let c = {name: "", metalIncome: 0, workerIncome: 0, level: 1, deck: "", total: 0, identifier: ""}
+    c.name = construction.name
+    c.metalIncome = construction.metalIncome
+    c.workerIncome = construction.workerIncome
+    c.deck = construction.deck
+    c.total = construction.total
+    return c
+}
+
+function deleteOldDiv(clone){
+    for (let i = 0; i < constructionsOnFieldEl.length; i++) {
+        if (constructionsOnFieldEl[i].id === clone.identifier) {
+            constructionsOnFieldEl = constructionsOnFieldEl.filter(elemento => elemento !== constructionsOnFieldEl[i]);
+        }
+    }
+}
+
+function updateClone(ident) {
+    for (let i = 0; i < clones.length; i++) {
+        if (clones[i].identifier === ident) {
+            clones[i].level += 1
+
+            deleteOldDiv(clones[i])
+            
+            let construction = document.createElement("div")
+            construction.id = `${clones[i].name}${clones[i].total}`
+            construction.className = "construction-icon"
+
+            let title = document.createElement("p")
+            title.textContent = clones[i].name
+            construction.appendChild(title)
+
+            let level = document.createElement("p")
+            level.textContent = `Nível: ${clones[i].level}`
+            construction.appendChild(level)
+
+            let upgradeBtn = document.createElement("button")
+            upgradeBtn.textContent = "MELHORAR"
+            upgradeBtn.addEventListener("click", function() {
+                if (confirm(`Deseja melhorar essa construção para o nível ${clones[i].level + 1}?`)) {
+                        upgrade(clones[i], ident)
+                }   
+            })
+            construction.appendChild(upgradeBtn)
+
+            constructionsOnFieldEl.push(construction)
+
+            buildingDisplayArea.innerHTML = " "
+
+        }
+        
+    }
+}
+
+function upgrade(building, identification) {
+    if (building.level < 5) {
+        if (enoughWorkers(building.deck, building.level)) {
+            if (building.deck === "prefeitura") {
+                if (building.level === 1) {
+                    updateClone(identification)
+                    if (building.metalIncome > 0) {
+                        prefeituraIncomeMetalResource += lvlTwoBenefits
+                    }
+                    if (building.workerIncome > 0) {
+                        prefeituraIncomeWorkerResource += lvlTwoBenefits
+                    }
+                    setValues()
+                    buildingDisplayArea.innerHTML += " "
+                    renderConstructionsOnField()
+                } else if (building.level === 2) {
+                    updateClone(identification)
+                    if (building.metalIncome > 0) {
+                        prefeituraIncomeMetalResource += lvlThreeBenefits
+                    }
+                    if (building.workerIncome > 0) {
+                        prefeituraIncomeWorkerResource += lvlThreeBenefits
+                    }
+                    setValues()
+                    buildingDisplayArea.innerHTML += " "
+                    renderConstructionsOnField()
+                } else if (building.level === 3) {
+                    updateClone(identification)
+                    if (building.metalIncome > 0) {
+                        prefeituraIncomeMetalResource += lvlFourBenefits
+                    }
+                    if (building.workerIncome > 0) {
+                        prefeituraIncomeWorkerResource += lvlFourBenefits
+                    }
+                    setValues()
+                    buildingDisplayArea.innerHTML += " "
+                    renderConstructionsOnField()
+                } else if (building.level === 4) {
+                    updateClone(identification)
+                    if (building.metalIncome > 0) {
+                        prefeituraIncomeMetalResource += lvlFiveBenefits
+                    }
+                    if (building.workerIncome > 0) {
+                        prefeituraIncomeWorkerResource += lvlFiveBenefits
+                    }
+                    setValues()
+                    buildingDisplayArea.innerHTML += " "
+                    renderConstructionsOnField()
+                }
+            } else if (building.deck === "recursos humanos") {
+                if (building.level === 1) {
+                    updateClone(identification)
+                    if (building.metalIncome > 0) {
+                        rhIncomeMetalResource += lvlTwoBenefits
+                    }
+                    if (building.workerIncome > 0) {
+                        rhIncomeWorkerResource += lvlTwoBenefits
+                    }
+                    setValues()
+                    buildingDisplayArea.innerHTML += " "
+                    renderConstructionsOnField()
+                } else if (building.level === 2) {
+                    updateClone(identification)
+                    if (building.metalIncome > 0) {
+                        rhIncomeMetalResource += lvlThreeBenefits
+                    }
+                    if (building.workerIncome > 0) {
+                        rhIncomeWorkerResource += lvlThreeBenefits
+                    }
+                    setValues()
+                    buildingDisplayArea.innerHTML += " "
+                    renderConstructionsOnField()
+                } else if (building.level === 3) {
+                    updateClone(identification)
+                    if (building.metalIncome > 0) {
+                        rhIncomeMetalResource += lvlFourBenefits
+                    }
+                    if (building.workerIncome > 0) {
+                        rhIncomeWorkerResource += lvlFourBenefits
+                    }
+                    setValues()
+                    buildingDisplayArea.innerHTML += " "
+                    renderConstructionsOnField()
+                } else if (building.level === 4) {
+                    updateClone(identification)
+                    if (building.metalIncome > 0) {
+                        rhIncomeMetalResource += lvlFiveBenefits
+                    }
+                    if (building.workerIncome > 0) {
+                        rhIncomeWorkerResource += lvlFiveBenefits
+                    }
+                    setValues()
+                    buildingDisplayArea.innerHTML += " "
+                    renderConstructionsOnField()
+                }                
+            } else if (building.deck === "diretores financeiros") {
+                if (building.level === 1) {
+                    updateClone(identification)
+                    if (building.metalIncome > 0) {
+                        dfIncomeMetalResource += lvlTwoBenefits
+                    }
+                    if (building.workerIncome > 0) {
+                        dfIncomeWorkerResource += lvlTwoBenefits
+                    }
+                    setValues()
+                    buildingDisplayArea.innerHTML += " "
+                    renderConstructionsOnField()
+                } else if (building.level === 2) {
+                    updateClone(identification)
+                    if (building.metalIncome > 0) {
+                        dfIncomeMetalResource += lvlThreeBenefits
+                    }
+                    if (building.workerIncome > 0) {
+                        dfIncomeWorkerResource += lvlThreeBenefits
+                    }
+                    setValues()
+                    buildingDisplayArea.innerHTML += " "
+                    renderConstructionsOnField()
+                } else if (building.level === 3) {
+                    updateClone(identification)
+                    if (building.metalIncome > 0) {
+                        dfIncomeMetalResource += lvlFourBenefits
+                    }
+                    if (building.workerIncome > 0) {
+                        dfIncomeWorkerResource += lvlFourBenefits
+                    }
+                    setValues()
+                    buildingDisplayArea.innerHTML += " "
+                    renderConstructionsOnField()
+                } else if (building.level === 4) {
+                    updateClone(identification)
+                    if (building.metalIncome > 0) {
+                        dfIncomeMetalResource += lvlFiveBenefits
+                    }
+                    if (building.workerIncome > 0) {
+                        dfIncomeWorkerResource += lvlFiveBenefits
+                    }
+                    setValues()
+                    buildingDisplayArea.innerHTML += " "
+                    renderConstructionsOnField()
+                }
+            }
+        
+        } else {
+            alert("Créditos Insuficientes")
+        }
+    } else {
+        alert("Nível máximo atingido")
+    }
+    
+    
+}
+
 
 //GAME PROCEDURE
 if (newGameBtn){
