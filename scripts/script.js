@@ -356,7 +356,7 @@ function setValues() {
                 <th> </th>
                 <th>Prefeitura</th>
                 <th>Recursos Humanos</th>
-                <th>Recursos Finaceiros</th>
+                <th>Recursos Financeiros</th>
             </tr>
             <tr>
                 <td><img src="../imagens/metal.png" class="resource-icon" alt="Metal"></td>
@@ -380,7 +380,7 @@ function setValues() {
                 <th> </th>
                 <th>Prefeitura</th>
                 <th>Recursos Humanos</th>
-                <th>Recursos Finaceiros</th>
+                <th>Recursos Financeiros</th>
             </tr>
             <tr>
                 <td><img src="../imagens/metal.png" class="resource-icon" alt="Metal"></td>

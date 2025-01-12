@@ -38,6 +38,8 @@ button {
     margin-top: 5px;
     margin-bottom: 5px;
     border-radius: 3px;
+    border: 1px solid black;
+    box-shadow: 2px 3px rgba(63, 61, 61, 0.527);
 }
 
 footer {
@@ -92,7 +94,7 @@ footer a {
 }
 
 #points-section th {
-    background-color: #f9e98b;
+    background-color: rgba(5, 32, 105, 0.253);
     border-radius: 2px;
     padding: 1px 2px;
 }
