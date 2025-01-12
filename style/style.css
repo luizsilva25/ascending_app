@@ -45,3 +45,11 @@ footer a {
     font-weight: bold;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+
+#buildings-display-el {
+    border: 3px, solid, darkslategrey;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+

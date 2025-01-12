@@ -94,6 +94,7 @@ function cleanScreen() {
     endRoundSection.innerHTML = " "
     buildSection.innerHTML = " "
     buildingDisplayArea.innerHTML = " "
+    businessAreaEl.innerHTML = " "
 }
 
 function restart() {
@@ -754,74 +755,83 @@ function sending(donor, receptor, quantidade, resource) {
     quantidade = parseInt(quantidade)
     if (resource === "Metais") {
         if (donor === "prefeitura") {
-            prefeituraCurrentMetalResource -= quantidade
-            if (receptor === "prefeitura") {
-                prefeituraCurrentMetalResource += quantidade
-            } else if (receptor === "Diretores de Recursos Humanos") {
-                rhCurrentMetalResource += quantidade
-            } else if (receptor === "Diretores de Recursos Financeiros") {
-                dfCurrentMetalResource += quantidade
-            }
+            if (prefeituraCurrentMetalResource >= quantidade) {
+                prefeituraCurrentMetalResource -= quantidade
+                if (receptor === "prefeitura") {
+                    prefeituraCurrentMetalResource += quantidade
+                } else if (receptor === "Diretores de Recursos Humanos") {
+                    rhCurrentMetalResource += quantidade
+                } else if (receptor === "Diretores de Recursos Financeiros") {
+                    dfCurrentMetalResource += quantidade
+                }
+            }  else {
+                alert("Recursos Insuficientes")
+            } 
+            
         } else if (donor === "Diretores de Recursos Humanos") {
-            rhCurrentMetalResource -= quantidade
-            if (receptor === "prefeitura") {
-                prefeituraCurrentMetalResource += quantidade
-            } else if (receptor === "Diretores de Recursos Humanos") {
-                rhCurrentMetalResource += quantidade
-            } else if (receptor === "Diretores de Recursos Financeiros") {
-                dfCurrentMetalResource += quantidade
+            if (rhCurrentMetalResource >= quantidade) {
+                rhCurrentMetalResource -= quantidade
+                if (receptor === "prefeitura") {
+                    prefeituraCurrentMetalResource += quantidade
+                } else if (receptor === "Diretores de Recursos Humanos") {
+                    rhCurrentMetalResource += quantidade
+                } else if (receptor === "Diretores de Recursos Financeiros") {
+                    dfCurrentMetalResource += quantidade
+                }
             }
+            
         } else if (donor === "Diretores de Recursos Financeiros") {
-            dfCurrentMetalResource -= quantidade
-            if (receptor === "prefeitura") {
-                prefeituraCurrentMetalResource += quantidade
-            } else if (receptor === "Diretores de Recursos Humanos") {
-                rhCurrentMetalResource += quantidade
-            } else if (receptor === "Diretores de Recursos Financeiros") {
-                dfCurrentMetalResource += quantidade
+            if (dfCurrentMetalResource >= quantidade) {
+                dfCurrentMetalResource -= quantidade
+                if (receptor === "prefeitura") {
+                    prefeituraCurrentMetalResource += quantidade
+                } else if (receptor === "Diretores de Recursos Humanos") {
+                    rhCurrentMetalResource += quantidade
+                } else if (receptor === "Diretores de Recursos Financeiros") {
+                    dfCurrentMetalResource += quantidade
+                }
             }
         }
     } else if (resource === "Mão de Obra") {
         if (donor === "prefeitura") {
-            prefeituraCurrentWorkerRosource -= quantidade
-            if (receptor === "prefeitura") {
-                prefeituraCurrentWorkerResource += quantidade
-            } else if (receptor === "Diretores de Recursos Humanos") {
-                rhCurrentWorkerResource += quantidade
-            } else if (receptor === "Diretores de Recursos Financeiros") {
-                dfCurrentWorkerResource += quantidade
+            if (prefeituraCurrentWorkerRosource >= quantidade) {
+                prefeituraCurrentWorkerRosource -= quantidade
+                if (receptor === "prefeitura") {
+                    prefeituraCurrentWorkerRosource += quantidade
+                } else if (receptor === "Diretores de Recursos Humanos") {
+                    rhCurrentWorkerResource += quantidade
+                } else if (receptor === "Diretores de Recursos Financeiros") {
+                    dfCurrentWorkerResource += quantidade
+                }
             }
+            
         } else if (donor === "Diretores de Recursos Humanos") {
-            rhCurrentWorkerResource -= quantidade
-            if (receptor === "prefeitura") {
-                prefeituraCurrentWorkerRosource += quantidade
-            } else if (receptor === "Diretores de Recursos Humanos") {
-                rhCurrentWorkerResource += quantidade
-            } else if (receptor === "Diretores de Recursos Financeiros") {
-                dfCurrentWorkerResource += quantidade
+            if (rhCurrentWorkerResource >= quantidade) {
+                rhCurrentWorkerResource -= quantidade
+                if (receptor === "prefeitura") {
+                    prefeituraCurrentWorkerRosource += quantidade
+                } else if (receptor === "Diretores de Recursos Humanos") {
+                    rhCurrentWorkerResource += quantidade
+                } else if (receptor === "Diretores de Recursos Financeiros") {
+                    dfCurrentWorkerResource += quantidade
+                }
             }
+            
         } else if (donor === "Diretores de Recursos Financeiros") {
-            dfCurrentWorkerResource -= quantidade
-            if (receptor === "prefeitura") {
-                prefeituraCurrentWorkerRosource += quantidade
-            } else if (receptor === "Diretores de Recursos Humanos") {
-                rhCurrentWorkerResource += quantidade
-            } else if (receptor === "Diretores de Recursos Financeiros") {
-                dfCurrentWorkerResource += quantidade
+            if (dfCurrentWorkerResource >= quantidade) {
+                dfCurrentWorkerResource -= quantidade
+                if (receptor === "prefeitura") {
+                    prefeituraCurrentWorkerRosource += quantidade
+                } else if (receptor === "Diretores de Recursos Humanos") {
+                    rhCurrentWorkerResource += quantidade
+                } else if (receptor === "Diretores de Recursos Financeiros") {
+                    dfCurrentWorkerResource += quantidade
+                }
             }
         }
     } else {
         alert("Error")
     }
-    //
-
-    // find type of resource
-
-    // subtract from donor
-
-    // find receptor
-
-    // sum to receptor
 }
 
 //GAME PROCEDURE
