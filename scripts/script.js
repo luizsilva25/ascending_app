@@ -69,12 +69,17 @@ function newGame() {
         buildInputValue.appendChild(buildOptionEl)
     }
 
+    // Add area selection field
+    addAreaSelectionField()
+
     //show build button
     const constructBtn = document.createElement("button")
     constructBtn.textContent = "CONSTRUIR"
     constructBtn.id = "construct-btn"
     constructBtn.addEventListener("click", construct)
     buildSection.appendChild(constructBtn)
+
+
 
     // botão realizar troca
     showExchangeButton()
@@ -150,29 +155,50 @@ function construct() {
             }
         }
     }
+}
 
-    
-
-
-    
+function checkForBonusCost(building) {
+    let area = document.getElementById("area-input-el").value
+    console.log(area)
+    let bonus = 0
+    if (area == 1) {
+        bonus += building.onField.areaOne
+    } else if (area == 2) {
+        bonus += building.onField.areaTwo
+    } else if (area == 3) {
+        bonus += building.onField.areaThree
+    } else if (area == 4) {
+        bonus += building.onField.areaFour
+    } else if (area == 5) {
+        bonus += building.onField.areaFive
+    } else if (area == 6) {
+        bonus += building.onField.areaSix
+    } else if (area == 7) {
+        bonus += building.onField.areaSeven
+    } else {
+        console.log("ERROR! Contate os desenvolvedores.")
+    }
+    console.log(bonus)
+    return bonus
 }
 
 function checkResources(building) {
+    let bonusCost = checkForBonusCost(building)
     let player = building.deck
     if (player === "prefeitura") {
-        if (prefeituraCurrentMetalResource >= building.price) {
+        if (prefeituraCurrentMetalResource >= (building.price + bonusCost)) {
             return true
         } else {
             return false
         }
     } else if (player === "recursos humanos") {
-        if (rhCurrentMetalResource >= building.price) {
+        if (rhCurrentMetalResource >= (building.price + bonusCost)) {
             return true
         } else {
             return false
         }
     } else if (player === "diretores financeiros") {
-        if (dfCurrentMetalResource >= building.price) {
+        if (dfCurrentMetalResource >= (building.price + bonusCost)) {
             return true
         } else {
             return false
@@ -286,16 +312,17 @@ function enoughWorkers(deck, lvl) {
 
 function incomeCalculator(building) {
     const player = building.deck
+    let bonusCost = checkForBonusCost(building)
     if (player === "prefeitura") {
-        prefeituraCurrentMetalResource -= building.price 
+        prefeituraCurrentMetalResource -= (building.price + bonusCost)
         prefeituraIncomeMetalResource += building.metalIncome
         prefeituraIncomeWorkerResource += building.workerIncome
     } else if (player === "recursos humanos") {
-        rhCurrentMetalResource -= building.price 
+        rhCurrentMetalResource -= (building.price + bonusCost)
         rhIncomeMetalResource += building.metalIncome
         rhIncomeWorkerResource += building.workerIncome
     } else if (player === "diretores financeiros") {
-        dfCurrentMetalResource -= building.price 
+        dfCurrentMetalResource -= (building.price + bonusCost)
         dfIncomeMetalResource += building.metalIncome
         dfCurrentWorkerResource += building.workerIncome
     } else {
@@ -862,6 +889,22 @@ function sending(donor, receptor, quantidade, resource) {
         alert("Error")
     }
 }
+
+function addAreaSelectionField() {
+    let p = document.createElement("p")
+    p.innerText = "Escolher Área: "
+    buildSection.appendChild(p)
+    const selecionarAreaInput = document.createElement("select")
+    selecionarAreaInput.id = "area-input-el"
+    buildSection.appendChild(selecionarAreaInput)
+    for (let i = 0; i < 7; i++) {
+        let n = document.createElement("option")
+        n.textContent = `${i+1}`
+        selecionarAreaInput.appendChild(n)
+    }
+    
+}
+    
 
 //GAME PROCEDURE
 if (newGameBtn){
