@@ -14,6 +14,7 @@ export let buildings = {
             areaFour: 0,
             areaFive: 0,
             areaSix: 0,
+            areaSeven: 0,
         },
         total: 0
     },
@@ -34,6 +35,7 @@ export let buildings = {
             areaFour: 0,
             areaFive: 0,
             areaSix: 0,
+            areaSeven: 0,
         },
         total: 0
     },
@@ -54,6 +56,7 @@ export let buildings = {
             areaFour: 0,
             areaFive: 0,
             areaSix: 0,
+            areaSeven: 0,
         },
         total: 0
     },
@@ -74,6 +77,7 @@ export let buildings = {
             areaFour: 0,
             areaFive: 0,
             areaSix: 0,
+            areaSeven: 0,
         },
         total: 0
     },
@@ -94,6 +98,7 @@ export let buildings = {
             areaFour: 0,
             areaFive: 0,
             areaSix: 0,
+            areaSeven: 0,
         },
         total: 0
     },
@@ -114,6 +119,7 @@ export let buildings = {
             areaFour: 0,
             areaFive: 24,
             areaSix: 24,
+            areaSeven: 0,
         },
         total: 0
     },
@@ -134,6 +140,7 @@ export let buildings = {
             areaFour: 0,
             areaFive: 0,
             areaSix: 0,
+            areaSeven: 0,
         },
         total: 0
     },
@@ -154,6 +161,7 @@ export let buildings = {
             areaFour: 0,
             areaFive: 0,
             areaSix: 0,
+            areaSeven: 0,
         },
         total: 0
     },
@@ -174,6 +182,7 @@ export let buildings = {
             areaFour: 0,
             areaFive: 0,
             areaSix: 0,
+            areaSeven: 0,
         },
         total: 0
     },
@@ -194,6 +203,7 @@ export let buildings = {
             areaFour: 15,
             areaFive: 0,
             areaSix: 15,
+            areaSeven: 0,
         },
         total: 0
     },
@@ -214,6 +224,7 @@ export let buildings = {
             areaFour: 15,
             areaFive: 0,
             areaSix: 15,
+            areaSeven: 0,
         },
         total: 0
     },
@@ -234,6 +245,7 @@ export let buildings = {
             areaFour: 15,
             areaFive: 0,
             areaSix: 0,
+            areaSeven: 0,
         },
         total: 0
     },
@@ -254,6 +266,7 @@ export let buildings = {
             areaFour: 0,
             areaFive: 0,
             areaSix: 0,
+            areaSeven: 0,
         },
         total: 0
     },
@@ -274,6 +287,7 @@ export let buildings = {
             areaFour: 0,
             areaFive: 0,
             areaSix: 2,
+            areaSeven: 0,
         },
         total: 0
     },
@@ -294,6 +308,7 @@ export let buildings = {
             areaFour: 0,
             areaFive: 0,
             areaSix: 7,
+            areaSeven: 0,
         },
         total: 0
     },
@@ -314,6 +329,7 @@ export let buildings = {
             areaFour: 0,
             areaFive: 0,
             areaSix: 2,
+            areaSeven: 0,
         },
         total: 0
     },
@@ -334,6 +350,7 @@ export let buildings = {
             areaFour: 0,
             areaFive: 0,
             areaSix: 4,
+            areaSeven: 0,
         },
         total: 0
     },
@@ -354,6 +371,7 @@ export let buildings = {
             areaFour: 0,
             areaFive: 0,
             areaSix: 4,
+            areaSeven: 0,
         },
         total: 0
     },
@@ -374,6 +392,7 @@ export let buildings = {
             areaFour: 0,
             areaFive: 0,
             areaSix: 2,
+            areaSeven: 0,
         },
         total: 0
     },
@@ -394,6 +413,7 @@ export let buildings = {
             areaFour: 0,
             areaFive: 0,
             areaSix: 4,
+            areaSeven: 0,
         },
         total: 0
     },
@@ -414,6 +434,7 @@ export let buildings = {
             areaFour: 0,
             areaFive: 0,
             areaSix: 5,
+            areaSeven: 0,
         },
         total: 0
     },
@@ -434,6 +455,7 @@ export let buildings = {
             areaFour: 0,
             areaFive: 0,
             areaSix: 4,
+            areaSeven: 0,
         },
         total: 0
     },
@@ -454,6 +476,7 @@ export let buildings = {
             areaFour: 0,
             areaFive: 0,
             areaSix: 5,
+            areaSeven: 0,
         },
         total: 0
     },
@@ -474,6 +497,7 @@ export let buildings = {
             areaFour: 0,
             areaFive: 0,
             areaSix: 5,
+            areaSeven: 0,
         },
         total: 0
     },
@@ -494,6 +518,7 @@ export let buildings = {
             areaFour: 0,
             areaFive: 0,
             areaSix: 5,
+            areaSeven: 0,
         },
         total: 0
     },
@@ -514,6 +539,7 @@ export let buildings = {
             areaFour: 0,
             areaFive: 0,
             areaSix: 0,
+            areaSeven: 0,
         },
         total: 0
     },
@@ -534,6 +560,7 @@ export let buildings = {
             areaFour: 4,
             areaFive: 12,
             areaSix: 12,
+            areaSeven: 0,
         },
         total: 0
     },
@@ -554,6 +581,7 @@ export let buildings = {
             areaFour: 0,
             areaFive: 0,
             areaSix: 0,
+            areaSeven: 0,
         },
         total: 0
     },
@@ -574,6 +602,7 @@ export let buildings = {
             areaFour: 0,
             areaFive: 0,
             areaSix: 0,
+            areaSeven: 0,
         },
         total: 0
     },
@@ -594,6 +623,7 @@ export let buildings = {
             areaFour: 8,
             areaFive: 8,
             areaSix: 0,
+            areaSeven: 0,
         },
         total: 0
     },
@@ -614,6 +644,7 @@ export let buildings = {
             areaFour: 0,
             areaFive: 0,
             areaSix: 0,
+            areaSeven: 0,
         },
         total: 0
     },
@@ -634,6 +665,7 @@ export let buildings = {
             areaFour: 0,
             areaFive: 0,
             areaSix: 0,
+            areaSeven: 0,
         },
         total: 0
     },
@@ -654,6 +686,7 @@ export let buildings = {
             areaFour: 0,
             areaFive: 0,
             areaSix: 0,
+            areaSeven: 0,
         },
         total: 0
     },
@@ -674,6 +707,7 @@ export let buildings = {
             areaFour: 4,
             areaFive: 4,
             areaSix: 0,
+            areaSeven: 0,
         },
         total: 0
     },
@@ -694,6 +728,7 @@ export let buildings = {
             areaFour: 4,
             areaFive: 4,
             areaSix: 0,
+            areaSeven: 0,
         },
         total: 0
     },
@@ -714,6 +749,7 @@ export let buildings = {
             areaFour: 0,
             areaFive: 5,
             areaSix: 0,
+            areaSeven: 0,
         },
         total: 0
     },
@@ -734,6 +770,7 @@ export let buildings = {
             areaFour: 0,
             areaFive: 0,
             areaSix: 0,
+            areaSeven: 0,
         },
         total: 0
     }    

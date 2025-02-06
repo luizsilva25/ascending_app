@@ -178,7 +178,6 @@ function checkForBonusCost(building) {
     } else {
         console.log("ERROR! Contate os desenvolvedores.")
     }
-    console.log(bonus)
     return bonus
 }
 
