@@ -150,6 +150,7 @@ function construct() {
                 incomeCalculator(buildings[key])
                 setValues()
                 addToBuildingDisplay(clone)
+                alert("Construção Adicionada")
             } else {
                 alert("Saldo Insuficiente")
             }
@@ -341,6 +342,7 @@ function paymentTime() {
 }
 
 function endRound() {
+    alert("Rodada Finalizada")
     round = round + 1
     if (round === maxRounds) {
         endGame()
