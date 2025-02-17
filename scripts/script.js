@@ -160,7 +160,6 @@ function construct() {
 
 function checkForBonusCost(building) {
     let area = document.getElementById("area-input-el").value
-    console.log(area)
     let bonus = 0
     if (area == 1) {
         bonus += building.onField.areaOne
@@ -476,6 +475,10 @@ function addToBuildingDisplay(building) {
     title.textContent = building.name
     construction.appendChild(title)
 
+    let image = document.createElement("img")
+    image.src = building.img
+    construction.appendChild(image)
+
     let level = document.createElement("p")
     level.textContent = `Nível: ${building.level}`
     construction.appendChild(level)
@@ -518,6 +521,7 @@ function cloneConstruction(construction) {
     c.workerIncome = construction.workerIncome
     c.deck = construction.deck
     c.total = construction.total
+    c.img = construction.img
     return c
 }
 
@@ -543,6 +547,10 @@ function updateClone(ident) {
             let title = document.createElement("p")
             title.textContent = clones[i].name
             construction.appendChild(title)
+
+            let image = document.createElement("img")
+            image.src = clones[i].img
+            construction.appendChild(image)
 
             let level = document.createElement("p")
             level.textContent = `Nível: ${clones[i].level}`

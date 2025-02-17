@@ -16,7 +16,8 @@ export let buildings = {
             areaSix: 0,
             areaSeven: 0,
         },
-        total: 0
+        total: 0,
+        img: "../imagens/buildings/estrada.jpg"
     },
 
     ponte: 
@@ -37,7 +38,8 @@ export let buildings = {
             areaSix: 0,
             areaSeven: 0,
         },
-        total: 0
+        total: 0,
+        img: "../imagens/buildings/ponte.jpg"
     },
 
     ferrovia: 
@@ -58,7 +60,8 @@ export let buildings = {
             areaSix: 0,
             areaSeven: 0,
         },
-        total: 0
+        total: 0,
+        img: "../imagens/buildings/ferrovia.jpg"
     },
 
     porto: 
@@ -79,7 +82,8 @@ export let buildings = {
             areaSix: 0,
             areaSeven: 0,
         },
-        total: 0
+        total: 0,
+        img: "../imagens/buildings/porto.jpg"
     },
 
     banco: 
@@ -100,7 +104,8 @@ export let buildings = {
             areaSix: 0,
             areaSeven: 0,
         },
-        total: 0
+        total: 0,
+        img: "../imagens/buildings/banco.jpg"
     },
 
     parqueNatural: 
@@ -121,7 +126,8 @@ export let buildings = {
             areaSix: 24,
             areaSeven: 0,
         },
-        total: 0
+        total: 0,
+        img: "../imagens/buildings/parque natural.jpg"
     },
 
     parqueMaritimo: 
@@ -142,7 +148,8 @@ export let buildings = {
             areaSix: 0,
             areaSeven: 0,
         },
-        total: 0
+        total: 0,
+        img: "../imagens/buildings/parque marinho.jpg"
     },
 
     aeroporto: 
@@ -163,7 +170,8 @@ export let buildings = {
             areaSix: 0,
             areaSeven: 0,
         },
-        total: 0
+        total: 0,
+        img: "../imagens/buildings/aeroporto.jpg"
     },
 
     centralEsgoto: 
@@ -184,7 +192,8 @@ export let buildings = {
             areaSix: 0,
             areaSeven: 0,
         },
-        total: 0
+        total: 0,
+        img: "../imagens/buildings/coleta.jpg"
     },
 
     parqueEolico: 
@@ -205,7 +214,8 @@ export let buildings = {
             areaSix: 15,
             areaSeven: 0,
         },
-        total: 0
+        total: 0,
+        img: "../imagens/buildings/eolico.jpg"
     },
 
     parqueSolar: 
@@ -226,7 +236,8 @@ export let buildings = {
             areaSix: 15,
             areaSeven: 0,
         },
-        total: 0
+        total: 0,
+        img: "../imagens/buildings/solar.jpg"
     },
         
     hidreletrica: 
@@ -247,7 +258,8 @@ export let buildings = {
             areaSix: 0,
             areaSeven: 0,
         },
-        total: 0
+        total: 0,
+        img: "../imagens/buildings/hidreletrica.jpg"
     },
 
     usinaNuclear: 
@@ -268,7 +280,8 @@ export let buildings = {
             areaSix: 0,
             areaSeven: 0,
         },
-        total: 0
+        total: 0,
+        img: "../imagens/buildings/nuclear.jpg"
     },
 
     casa: 
@@ -289,7 +302,8 @@ export let buildings = {
             areaSix: 2,
             areaSeven: 0,
         },
-        total: 0
+        total: 0,
+        img: "../imagens/buildings/casa.jpg"
     },
 
     praça: 
@@ -310,7 +324,8 @@ export let buildings = {
             areaSix: 7,
             areaSeven: 0,
         },
-        total: 0
+        total: 0,
+        img: "../imagens/buildings/praça.jpg"
     },
 
     restaurante: 
@@ -331,7 +346,8 @@ export let buildings = {
             areaSix: 2,
             areaSeven: 0,
         },
-        total: 0
+        total: 0,
+        img: "../imagens/buildings/restaurante.jpg"
     },
 
     teatro: 
@@ -352,7 +368,8 @@ export let buildings = {
             areaSix: 4,
             areaSeven: 0,
         },
-        total: 0
+        total: 0,
+        img: "../imagens/buildings/teatro.jpg"
     },
 
     escola: 
@@ -373,7 +390,8 @@ export let buildings = {
             areaSix: 4,
             areaSeven: 0,
         },
-        total: 0
+        total: 0,
+        img: "../imagens/buildings/escola.jpg"
     },
 
     creche: 
@@ -394,7 +412,8 @@ export let buildings = {
             areaSix: 2,
             areaSeven: 0,
         },
-        total: 0
+        total: 0,
+        img: "../imagens/buildings/creche.jpg"
     },
         
     postoSaude: 
@@ -415,7 +434,8 @@ export let buildings = {
             areaSix: 4,
             areaSeven: 0,
         },
-        total: 0
+        total: 0,
+        img: "../imagens/buildings/posto.jpg"
     },
 
     cinema: 
@@ -436,7 +456,8 @@ export let buildings = {
             areaSix: 5,
             areaSeven: 0,
         },
-        total: 0
+        total: 0,
+        img: "../imagens/buildings/cinema.jpg"
     },
 
     laboratorio: 
@@ -457,7 +478,8 @@ export let buildings = {
             areaSix: 4,
             areaSeven: 0,
         },
-        total: 0
+        total: 0,
+        img: "../imagens/buildings/lab.jpg"
     },
 
     universidade: 
@@ -478,7 +500,8 @@ export let buildings = {
             areaSix: 5,
             areaSeven: 0,
         },
-        total: 0
+        total: 0,
+        img: "../imagens/buildings/universidade.jpg"
     },
 
     hospital: 
@@ -499,7 +522,8 @@ export let buildings = {
             areaSix: 5,
             areaSeven: 0,
         },
-        total: 0
+        total: 0,
+        img: "../imagens/buildings/hospital.jpg"
     },
 
     apartamento: 
@@ -520,7 +544,8 @@ export let buildings = {
             areaSix: 5,
             areaSeven: 0,
         },
-        total: 0
+        total: 0,
+        img: "../imagens/buildings/apartamento.jpg"
     },
 
     zonaPesca: 
@@ -541,7 +566,8 @@ export let buildings = {
             areaSix: 0,
             areaSeven: 0,
         },
-        total: 0
+        total: 0,
+        img: "../imagens/buildings/pesca.jpg"
     },
 
     fazenda: 
@@ -562,7 +588,8 @@ export let buildings = {
             areaSix: 12,
             areaSeven: 0,
         },
-        total: 0
+        total: 0,
+        img: "../imagens/buildings/fazenda.jpg"
     },
 
     madeireira: 
@@ -583,7 +610,8 @@ export let buildings = {
             areaSix: 0,
             areaSeven: 0,
         },
-        total: 0
+        total: 0,
+        img: "../imagens/buildings/madeireira.jpg"
     },
 
     construtora: 
@@ -604,7 +632,8 @@ export let buildings = {
             areaSix: 0,
             areaSeven: 0,
         },
-        total: 0
+        total: 0,
+        img: "../imagens/buildings/construtora.jpg"
     },
 
     poloMetalurgico: 
@@ -625,7 +654,8 @@ export let buildings = {
             areaSix: 0,
             areaSeven: 0,
         },
-        total: 0
+        total: 0,
+        img: "../imagens/buildings/metalurgico.jpg"
     },
 
     distribuidora: 
@@ -646,7 +676,8 @@ export let buildings = {
             areaSix: 0,
             areaSeven: 0,
         },
-        total: 0
+        total: 0,
+        img: "../imagens/buildings/distribuidora.jpg"
     },
 
     poloAuto: 
@@ -667,7 +698,8 @@ export let buildings = {
             areaSix: 0,
             areaSeven: 0,
         },
-        total: 0
+        total: 0,
+        img: "../imagens/buildings/automobilistico.jpg"
     },
 
     poloMarinho: 
@@ -688,7 +720,8 @@ export let buildings = {
             areaSix: 0,
             areaSeven: 0,
         },
-        total: 0
+        total: 0,
+        img: "../imagens/buildings/maritimo.jpg"
     },
 
     poloFarmaceutico: 
@@ -709,7 +742,8 @@ export let buildings = {
             areaSix: 0,
             areaSeven: 0,
         },
-        total: 0
+        total: 0,
+        img: "../imagens/buildings/farmaceutico.jpg"
     },
 
     centralInovação: 
@@ -730,7 +764,8 @@ export let buildings = {
             areaSix: 0,
             areaSeven: 0,
         },
-        total: 0
+        total: 0,
+        img: "../imagens/buildings/tecnologica.jpg"
     },
 
     mineradora: 
@@ -751,7 +786,8 @@ export let buildings = {
             areaSix: 0,
             areaSeven: 0,
         },
-        total: 0
+        total: 0,
+        img: "../imagens/buildings/mineradora.jpg"
     },
 
     pocoPetroleo: 
@@ -772,7 +808,8 @@ export let buildings = {
             areaSix: 0,
             areaSeven: 0,
         },
-        total: 0
+        total: 0,
+        img: "../imagens/buildings/petroleo.jpg"
     }    
 }
 
