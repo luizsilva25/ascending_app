@@ -461,6 +461,8 @@ function endGame() {
     }
 }
 
+
+
 function addToBuildingDisplay(building) {
     let id = `${building.name}${building.total}`
 
@@ -486,6 +488,16 @@ function addToBuildingDisplay(building) {
         }
     })
     construction.appendChild(upgradeBtn)
+
+    let demolishBtn = document.createElement("button")
+    demolishBtn.id = "demolish-button"
+    demolishBtn.textContent = "DEMOLIR"
+    demolishBtn.addEventListener("click", function() {
+        if (confirm("Deseja demolir esta construção?")) {
+            demolish(building)
+        }
+    })
+    construction.appendChild(demolishBtn)
         
     constructionsOnFieldEl.push(construction)
     
@@ -545,8 +557,17 @@ function updateClone(ident) {
             })
             construction.appendChild(upgradeBtn)
 
-            constructionsOnFieldEl.push(construction)
+            let demolishBtn = document.createElement("button")
+            demolishBtn.id = "demolish-button"
+            demolishBtn.textContent = "DEMOLIR"
+            demolishBtn.addEventListener("click", function() {
+                if (confirm("Deseja demolir esta construção?")) {
+                        demolish(clones[i])
+                }   
+            })
+            construction.appendChild(demolishBtn)
 
+            constructionsOnFieldEl.push(construction)
             buildingDisplayArea.innerHTML = " "
 
         }
@@ -905,7 +926,18 @@ function addAreaSelectionField() {
     }
     
 }
-    
+
+function demolish(construction) {
+    deleteOldDiv(construction)
+    for (let i = 0; i < clones.length; i++) {
+        if (clones[i].id === construction.identifier) {
+            clones = clones.filter(elemento => elemento !== clones[i]);
+        }
+    }
+    buildingDisplayArea.innerHTML = " "
+    renderConstructionsOnField()
+    alert("Demolindo...")
+}
 
 //GAME PROCEDURE
 if (newGameBtn){
