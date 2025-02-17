@@ -460,8 +460,6 @@ function endGame() {
     }
 }
 
-
-
 function addToBuildingDisplay(building) {
     let id = `${building.name}${building.total}`
 
@@ -936,16 +934,82 @@ function addAreaSelectionField() {
 }
 
 function demolish(construction) {
+    removePoints(construction)
+    if (construction.level > 1) {
+        removeUpgradeBenefits(construction)
+    }
     deleteOldDiv(construction)
     for (let i = 0; i < clones.length; i++) {
         if (clones[i].id === construction.identifier) {
             clones = clones.filter(elemento => elemento !== clones[i]);
         }
     }
+
+    alert("Demolindo...")
+
     buildingDisplayArea.innerHTML = " "
     renderConstructionsOnField()
-    alert("Demolindo...")
+    setValues()
 }
+
+function removePoints(building) {
+    if (building.deck === "prefeitura") {
+        prefeituraIncomeMetalResource -= building.metalIncome
+        prefeituraIncomeWorkerResource -= building.workerIncome
+    } else if (building.deck === "diretores financeiros") {
+        dfIncomeMetalResource -= building.metalIncome
+        dfIncomeWorkerResource -= building.workerIncome
+    } else if (building.deck === "recursos humanos") {
+        rhCurrentMetalResource -= building.metalIncome
+        rhIncomeWorkerResource -= building.workerIncome
+    } else {
+        alert("ERRO: contate os desenvolvedores")
+    }
+}
+
+function removeUpgradeBenefits(building) {
+    
+    // Find Benefits
+    let benefits = 0
+    if (building.level == 2) {
+        benefits = lvlTwoBenefits
+    } else if (building.level == 3) {
+        benefits = lvlThreeBenefits
+    } else if (building.level == 4) {
+        benefits = lvlFourBenefits
+    } else if (building.level == 5) {
+        benefits = lvlFiveBenefits
+    } else {
+        alert("ERRO: contate os desenvolvedores")
+    }
+
+    // Find Character
+    if (building.deck === "prefeitura") {
+        if (building.metalIncome > 0) {
+            prefeituraIncomeMetalResource -= benefits
+        }
+        if (building.workerIncome > 0) {
+            prefeituraIncomeWorkerResource -= benefits
+        }
+    } else if (building.deck === "diretores financeiros") {
+        if (building.metalIncome > 0) {
+            dfIncomeMetalResource -= benefits
+        }
+        if (building.workerIncome > 0) {
+            dfIncomeWorkerResource -= benefits
+        }
+    } else if (building.deck === "recursos humanos") {
+        if (building.metalIncome > 0) {
+            rhIncomeMetalResource -= benefits
+        }
+        if (building.workerIncome > 0) {
+            rhIncomeWorkerResource -= benefits
+        }
+    } else {
+        alert("ERRO: contate os desenvolvedores")
+    }
+}
+
 
 //GAME PROCEDURE
 if (newGameBtn){
