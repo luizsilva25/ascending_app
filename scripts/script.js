@@ -17,6 +17,7 @@ const lvlFiveCost = 20
 const openFirstDisaster = 3
 const openSecondDisaster = 6
 const openThirdDisaster = 12
+let counterAlert = 0
 let gameOn = false
 let round = 1
 let lifeQuality = 0
@@ -123,6 +124,7 @@ function restart() {
     rhIncomeWorkerResource = 0
     dfIncomeMetalResource = 0
     dfIncomeWorkerResource = 0
+    counterAlert = 0
     for (let i = 0; i < buildingNumber; i++) {
         let key = buildingNames[i]
         buildings[key].onField.lvlOne = 0
@@ -1025,15 +1027,19 @@ function removeUpgradeBenefits(building) {
 }
 
 function revealDisaster() {
-    if (sciencePoints === openFirstDisaster) {
+    console.log(counterAlert)
+    if (sciencePoints === openFirstDisaster && counterAlert == 0) {
         document.getElementById("revealDisasterSound").play()
         alert("É HORA DE REVELAR A PRIMEIRA CARTA DESASTRE!")
-    } else if (sciencePoints === openSecondDisaster) {
+        counterAlert += 1
+    } else if (sciencePoints === openSecondDisaster && counterAlert == 1) {
         document.getElementById("revealDisasterSound").play()
         alert("É HORA DE REVELAR A SEGUNDA CARTA DESASTRE!")
-    } else if (sciencePoints === openThirdDisaster) {
+        counterAlert += 1
+    } else if (sciencePoints === openThirdDisaster && counterAlert == 2 ) {
         document.getElementById("revealDisasterSound").play()
         alert("É HORA DE REVELAR A TERCEIRA CARTA DESASTRE!")
+        counterAlert += 1
     } 
 }
 
