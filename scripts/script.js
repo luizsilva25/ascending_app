@@ -988,11 +988,11 @@ function removeUpgradeBenefits(building) {
     if (building.level == 2) {
         benefits = lvlTwoBenefits
     } else if (building.level == 3) {
-        benefits = lvlThreeBenefits
+        benefits = lvlThreeBenefits + lvlTwoBenefits
     } else if (building.level == 4) {
-        benefits = lvlFourBenefits
+        benefits = lvlFourBenefits + lvlThreeBenefits + lvlTwoBenefits
     } else if (building.level == 5) {
-        benefits = lvlFiveBenefits
+        benefits = lvlFiveBenefits + lvlFourBenefits + lvlThreeBenefits + lvlTwoBenefits
     } else {
         alert("ERRO: contate os desenvolvedores")
     }
