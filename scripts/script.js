@@ -14,6 +14,9 @@ const lvlTwoCost = 5
 const lvlThreeCost = 10
 const lvlFourCost = 15
 const lvlFiveCost = 20
+const openFirstDisaster = 3
+const openSecondDisaster = 6
+const openThirdDisaster = 12
 let gameOn = false
 let round = 1
 let lifeQuality = 0
@@ -152,6 +155,7 @@ function construct() {
                 addToBuildingDisplay(clone)
                 document.getElementById("construct-sound").play()
                 alert("Construção Adicionada")
+                revealDisaster()
             } else {
                 alert("Saldo Insuficiente")
             }
@@ -1020,6 +1024,18 @@ function removeUpgradeBenefits(building) {
     }
 }
 
+function revealDisaster() {
+    if (sciencePoints === openFirstDisaster) {
+        document.getElementById("revealDisasterSound").play()
+        alert("É HORA DE REVELAR A PRIMEIRA CARTA DESASTRE!")
+    } else if (sciencePoints === openSecondDisaster) {
+        document.getElementById("revealDisasterSound").play()
+        alert("É HORA DE REVELAR A SEGUNDA CARTA DESASTRE!")
+    } else if (sciencePoints === openThirdDisaster) {
+        document.getElementById("revealDisasterSound").play()
+        alert("É HORA DE REVELAR A TERCEIRA CARTA DESASTRE!")
+    } 
+}
 
 //GAME PROCEDURE
 if (newGameBtn){
@@ -1043,7 +1059,7 @@ demolishSound.id = "demolish-sound"
 demolishSound.src = "../sfx/demolish_sfx.wav"
 document.body.appendChild(demolishSound)
 
-const sendingSound =  document.createElement("audio")
+const sendingSound = document.createElement("audio")
 sendingSound.id = "sending-sound"
 sendingSound.src = "../sfx/sending_sfx.wav"
 document.body.appendChild(sendingSound)
@@ -1052,3 +1068,8 @@ const endRoundSound =  document.createElement("audio")
 endRoundSound.id = "end-round-sound"
 endRoundSound.src = "../sfx/end-round_sfx.wav"
 document.body.appendChild(endRoundSound)
+
+const revealDisasterSound = document.createElement("audio")
+revealDisasterSound.id = "revealDisasterSound"
+revealDisasterSound.src = "../sfx/disaster_reveal_sfx.wav"
+document.body.appendChild(revealDisasterSound)
