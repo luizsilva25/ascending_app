@@ -3,7 +3,6 @@ import { buildings } from "./gameObjects.js"
 import { characters } from "./gameObjects.js"
 
 
-
 //GOBLAL VARIABLES
 const maxRounds = 11
 const lvlTwoBenefits = 2
@@ -42,6 +41,8 @@ let dfIncomeWorkerResource = 0
 let constructionsOnFieldEl = []
 let clones = []
 
+//GAME DYNAMICS VARIABLES
+let soundOn = true
 
 //DOM ELEMENTS
 const newGameBtn = document.getElementById("new-game-btn")
@@ -51,7 +52,7 @@ const buildSection = document.getElementById("build-section")
 const endRoundSection = document.getElementById("end-round-section")
 const buildingDisplayArea = document.getElementById("buildings-display-el")
 const businessAreaEl = document.getElementById("business-area")
-
+const menuBtns = document.getElementById("menu-btns")
 
 
 //FUNCTIONS
@@ -155,10 +156,15 @@ function construct() {
                 incomeCalculator(buildings[key])
                 setValues()
                 addToBuildingDisplay(clone)
-                document.getElementById("construct-sound").play()
+                if (soundOn == true) {
+                    document.getElementById("construct-sound").play()
+                }
                 alert("Construção Adicionada")
                 revealDisaster()
             } else {
+                if (soundOn == true) {
+                    document.getElementById("not-enough-sound").play()
+                }
                 alert("Saldo Insuficiente")
             }
         }
@@ -243,6 +249,9 @@ function enoughWorkers(deck, lvl) {
             }
 
         } else {
+            if (soundOn == true) {
+                document.getElementById("not-enough-sound").play()
+            }
             alert("Nível máximo atingido")
             return false
         }
@@ -275,6 +284,9 @@ function enoughWorkers(deck, lvl) {
              }
  
          } else {
+            if (soundOn == true) {
+                document.getElementById("not-enough-sound").play()
+            }
              alert("Nível máximo atingido")
              return false
          }
@@ -307,6 +319,9 @@ function enoughWorkers(deck, lvl) {
              }
  
          } else {
+             if (soundOn == true) {
+                 document.getElementById("not-enough-sound").play()
+             }
              alert("Nível máximo atingido")
              return false
          }
@@ -356,7 +371,9 @@ function endRound() {
     }
     
     if (gameOn === true) {
-        document.getElementById("end-round-sound").play()
+        if (soundOn == true) {
+            document.getElementById("end-round-sound").play()
+        }
         paymentTime()
         setValues()
     }
@@ -592,7 +609,9 @@ function updateClone(ident) {
 function upgrade(building, identification) {
     if (building.level < 5) {
         if (enoughWorkers(building.deck, building.level)) {
-            document.getElementById("upgrade-sound").play()
+            if (soundOn == true) {
+                document.getElementById("upgrade-sound").play()
+            }
             if (building.deck === "prefeitura") {
                 if (building.level === 1) {
                     updateClone(identification)
@@ -757,11 +776,6 @@ function upgrade(building, identification) {
 
 function exchange() {
     businessAreaEl.innerHTML = " "
-    //show business area
-        // field doador
-        //let p = document.createElement("p")
-        //p.innerText = "de: "
-        //businessAreaEl.appendChild(p)
         
         const donorInputEl = document.createElement("select")
         donorInputEl.id = "donor-input-el"
@@ -849,7 +863,9 @@ function sending(donor, receptor, quantidade, resource) {
     if (resource === "Metais") {
         if (donor === "prefeitura") {
             if (prefeituraCurrentMetalResource >= quantidade) {
-                document.getElementById("sending-sound").play()
+                if (soundOn == true) {
+                    document.getElementById("sending-sound").play()
+                }
                 prefeituraCurrentMetalResource -= quantidade
                 if (receptor === "prefeitura") {
                     prefeituraCurrentMetalResource += quantidade
@@ -859,12 +875,17 @@ function sending(donor, receptor, quantidade, resource) {
                     dfCurrentMetalResource += quantidade
                 }
             }  else {
+                if (soundOn == true) {
+                    document.getElementById("not-enough-sound").play()
+                }
                 alert("Recursos Insuficientes")
             } 
             
         } else if (donor === "Diretores de Recursos Humanos") {
             if (rhCurrentMetalResource >= quantidade) {
-                document.getElementById("sending-sound").play()
+                if (soundOn == true) {
+                    document.getElementById("sending-sound").play()
+                }
                 rhCurrentMetalResource -= quantidade
                 if (receptor === "prefeitura") {
                     prefeituraCurrentMetalResource += quantidade
@@ -872,12 +893,19 @@ function sending(donor, receptor, quantidade, resource) {
                     rhCurrentMetalResource += quantidade
                 } else if (receptor === "Diretores de Recursos Financeiros") {
                     dfCurrentMetalResource += quantidade
+                } 
+            } else {
+                if (soundOn == true) {
+                    document.getElementById("not-enough-sound").play()
                 }
-            }
+                alert("Recursos Insuficientes")
+            } 
             
         } else if (donor === "Diretores de Recursos Financeiros") {
             if (dfCurrentMetalResource >= quantidade) {
-                document.getElementById("sending-sound").play()
+                if (soundOn == true) {
+                    document.getElementById("sending-sound").play()
+                }
                 dfCurrentMetalResource -= quantidade
                 if (receptor === "prefeitura") {
                     prefeituraCurrentMetalResource += quantidade
@@ -886,12 +914,19 @@ function sending(donor, receptor, quantidade, resource) {
                 } else if (receptor === "Diretores de Recursos Financeiros") {
                     dfCurrentMetalResource += quantidade
                 }
-            }
+            } else {
+                if (soundOn == true) {
+                    document.getElementById("not-enough-sound").play()
+                }
+                alert("Recursos Insuficientes")
+            } 
         }
     } else if (resource === "Mão de Obra") {
         if (donor === "prefeitura") {
             if (prefeituraCurrentWorkerRosource >= quantidade) {
-                document.getElementById("sending-sound").play()
+                if (soundOn == true) {
+                    document.getElementById("sending-sound").play()
+                }
                 prefeituraCurrentWorkerRosource -= quantidade
                 if (receptor === "prefeitura") {
                     prefeituraCurrentWorkerRosource += quantidade
@@ -900,11 +935,18 @@ function sending(donor, receptor, quantidade, resource) {
                 } else if (receptor === "Diretores de Recursos Financeiros") {
                     dfCurrentWorkerResource += quantidade
                 }
-            }
+            } else {
+                if (soundOn == true) {
+                    document.getElementById("not-enough-sound").play()
+                }
+                alert("Recursos Insuficientes")
+            } 
             
         } else if (donor === "Diretores de Recursos Humanos") {
             if (rhCurrentWorkerResource >= quantidade) {
-                document.getElementById("sending-sound").play()
+                if (soundOn == true) {
+                    document.getElementById("sending-sound").play()
+                }
                 rhCurrentWorkerResource -= quantidade
                 if (receptor === "prefeitura") {
                     prefeituraCurrentWorkerRosource += quantidade
@@ -913,11 +955,18 @@ function sending(donor, receptor, quantidade, resource) {
                 } else if (receptor === "Diretores de Recursos Financeiros") {
                     dfCurrentWorkerResource += quantidade
                 }
-            }
+            } else {
+                if (soundOn == true) {
+                    document.getElementById("not-enough-sound").play()
+                }
+                alert("Recursos Insuficientes")
+            } 
             
         } else if (donor === "Diretores de Recursos Financeiros") {
             if (dfCurrentWorkerResource >= quantidade) {
-                document.getElementById("sending-sound").play()
+                if (soundOn == true) {
+                    document.getElementById("sending-sound").play()
+                }
                 dfCurrentWorkerResource -= quantidade
                 if (receptor === "prefeitura") {
                     prefeituraCurrentWorkerRosource += quantidade
@@ -926,7 +975,12 @@ function sending(donor, receptor, quantidade, resource) {
                 } else if (receptor === "Diretores de Recursos Financeiros") {
                     dfCurrentWorkerResource += quantidade
                 }
-            }
+            } else {
+                if (soundOn == true) {
+                    document.getElementById("not-enough-sound").play()
+                }
+                alert("Recursos Insuficientes")
+            } 
         }
     } else {
         alert("Error")
@@ -960,7 +1014,10 @@ function demolish(construction) {
         }
     }
 
-    document.getElementById("demolish-sound").play()
+    if (soundOn == true) {
+        document.getElementById("demolish-sound").play()
+    }
+
     alert("Demolindo...")
 
     buildingDisplayArea.innerHTML = " "
@@ -1027,27 +1084,47 @@ function removeUpgradeBenefits(building) {
 }
 
 function revealDisaster() {
-    console.log(counterAlert)
     if (sciencePoints === openFirstDisaster && counterAlert == 0) {
-        document.getElementById("revealDisasterSound").play()
+        if (soundOn == true) {
+            document.getElementById("revealDisasterSound").play()
+        }
         alert("É HORA DE REVELAR A PRIMEIRA CARTA DESASTRE!")
         counterAlert += 1
     } else if (sciencePoints === openSecondDisaster && counterAlert == 1) {
-        document.getElementById("revealDisasterSound").play()
+        if (soundOn == true) {
+            document.getElementById("revealDisasterSound").play()
+        }
         alert("É HORA DE REVELAR A SEGUNDA CARTA DESASTRE!")
         counterAlert += 1
     } else if (sciencePoints === openThirdDisaster && counterAlert == 2 ) {
-        document.getElementById("revealDisasterSound").play()
+        if (soundOn == true) {
+            document.getElementById("revealDisasterSound").play()
+        }
         alert("É HORA DE REVELAR A TERCEIRA CARTA DESASTRE!")
         counterAlert += 1
     } 
 }
 
-//GAME PROCEDURE
-if (newGameBtn){
-    newGameBtn.addEventListener("click", newGame)
+function addSoundButton(container) {
+    const soundBtn = document.createElement("button")
+    soundBtn.id = "sound-button"
+    soundBtn.innerText = "sound"
+    soundBtn.addEventListener('click', function() {
+        if (soundOn == true) {
+            soundOn = false
+        } else {
+            soundOn = true
+        }
+    })
+    container.appendChild(soundBtn)
 }
 
+//GAME PROCEDURE
+if (newGameBtn){
+    newGameBtn.addEventListener("click", newGame) 
+}
+
+addSoundButton(menuBtns)
 
 //GAME ASSETS
 const upgradeSound = document.createElement("audio")
@@ -1079,3 +1156,8 @@ const revealDisasterSound = document.createElement("audio")
 revealDisasterSound.id = "revealDisasterSound"
 revealDisasterSound.src = "../sfx/disaster_reveal_sfx.wav"
 document.body.appendChild(revealDisasterSound)
+
+const notEnoughSound = document.createElement("audio")
+notEnoughSound.id = "not-enough-sound"
+notEnoughSound.src = "../sfx/not_enough_sfx.wav"
+document.body.appendChild(notEnoughSound)

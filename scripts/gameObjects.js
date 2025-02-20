@@ -829,3 +829,18 @@ export const characters = {
         inicialMetalResource: 25,
         inicialWorkerResource: 15}
 }
+
+export const disasters = {
+    chuvasIntensas: {
+        name: "chuvas intensas",
+        conditions: {
+            lifeQualityDemand: 140,
+            polutionPointsDemand: 0,
+            sciencePointsDemand: 0,
+        },
+        constructionNumber: {
+            estradaDemand: 0,
+
+        }
+    }
+}
