@@ -150,6 +150,7 @@ function construct() {
                 incomeCalculator(buildings[key])
                 setValues()
                 addToBuildingDisplay(clone)
+                document.getElementById("construct-sound").play()
                 alert("Construção Adicionada")
             } else {
                 alert("Saldo Insuficiente")
@@ -349,6 +350,7 @@ function endRound() {
     }
     
     if (gameOn === true) {
+        document.getElementById("end-round-sound").play()
         paymentTime()
         setValues()
     }
@@ -584,6 +586,7 @@ function updateClone(ident) {
 function upgrade(building, identification) {
     if (building.level < 5) {
         if (enoughWorkers(building.deck, building.level)) {
+            document.getElementById("upgrade-sound").play()
             if (building.deck === "prefeitura") {
                 if (building.level === 1) {
                     updateClone(identification)
@@ -840,6 +843,7 @@ function sending(donor, receptor, quantidade, resource) {
     if (resource === "Metais") {
         if (donor === "prefeitura") {
             if (prefeituraCurrentMetalResource >= quantidade) {
+                document.getElementById("sending-sound").play()
                 prefeituraCurrentMetalResource -= quantidade
                 if (receptor === "prefeitura") {
                     prefeituraCurrentMetalResource += quantidade
@@ -854,6 +858,7 @@ function sending(donor, receptor, quantidade, resource) {
             
         } else if (donor === "Diretores de Recursos Humanos") {
             if (rhCurrentMetalResource >= quantidade) {
+                document.getElementById("sending-sound").play()
                 rhCurrentMetalResource -= quantidade
                 if (receptor === "prefeitura") {
                     prefeituraCurrentMetalResource += quantidade
@@ -866,6 +871,7 @@ function sending(donor, receptor, quantidade, resource) {
             
         } else if (donor === "Diretores de Recursos Financeiros") {
             if (dfCurrentMetalResource >= quantidade) {
+                document.getElementById("sending-sound").play()
                 dfCurrentMetalResource -= quantidade
                 if (receptor === "prefeitura") {
                     prefeituraCurrentMetalResource += quantidade
@@ -879,6 +885,7 @@ function sending(donor, receptor, quantidade, resource) {
     } else if (resource === "Mão de Obra") {
         if (donor === "prefeitura") {
             if (prefeituraCurrentWorkerRosource >= quantidade) {
+                document.getElementById("sending-sound").play()
                 prefeituraCurrentWorkerRosource -= quantidade
                 if (receptor === "prefeitura") {
                     prefeituraCurrentWorkerRosource += quantidade
@@ -891,6 +898,7 @@ function sending(donor, receptor, quantidade, resource) {
             
         } else if (donor === "Diretores de Recursos Humanos") {
             if (rhCurrentWorkerResource >= quantidade) {
+                document.getElementById("sending-sound").play()
                 rhCurrentWorkerResource -= quantidade
                 if (receptor === "prefeitura") {
                     prefeituraCurrentWorkerRosource += quantidade
@@ -903,6 +911,7 @@ function sending(donor, receptor, quantidade, resource) {
             
         } else if (donor === "Diretores de Recursos Financeiros") {
             if (dfCurrentWorkerResource >= quantidade) {
+                document.getElementById("sending-sound").play()
                 dfCurrentWorkerResource -= quantidade
                 if (receptor === "prefeitura") {
                     prefeituraCurrentWorkerRosource += quantidade
@@ -945,6 +954,7 @@ function demolish(construction) {
         }
     }
 
+    document.getElementById("demolish-sound").play()
     alert("Demolindo...")
 
     buildingDisplayArea.innerHTML = " "
@@ -1015,3 +1025,30 @@ function removeUpgradeBenefits(building) {
 if (newGameBtn){
     newGameBtn.addEventListener("click", newGame)
 }
+
+
+//GAME ASSETS
+const upgradeSound = document.createElement("audio")
+upgradeSound.id = "upgrade-sound"
+upgradeSound.src = "../sfx/upgrade_sfx.wav"
+document.body.appendChild(upgradeSound)
+
+const constructSound = document.createElement("audio")
+constructSound.id = "construct-sound"
+constructSound.src = "../sfx/construct_sfx.wav"
+document.body.appendChild(constructSound)
+
+const demolishSound = document.createElement("audio")
+demolishSound.id = "demolish-sound"
+demolishSound.src = "../sfx/demolish_sfx.wav"
+document.body.appendChild(demolishSound)
+
+const sendingSound =  document.createElement("audio")
+sendingSound.id = "sending-sound"
+sendingSound.src = "../sfx/sending_sfx.wav"
+document.body.appendChild(sendingSound)
+
+const endRoundSound =  document.createElement("audio")
+endRoundSound.id = "end-round-sound"
+endRoundSound.src = "../sfx/end-round_sfx.wav"
+document.body.appendChild(endRoundSound)
