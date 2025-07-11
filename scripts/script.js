@@ -1,6 +1,7 @@
 //GAME ELEMENTS
 import { buildings } from "./gameObjects.js"
 import { characters } from "./gameObjects.js"
+import * as Disasters from "./disasters.js"
 
 
 //GOBLAL VARIABLES
@@ -40,6 +41,7 @@ let dfIncomeMetalResource = 0
 let dfIncomeWorkerResource = 0
 let constructionsOnFieldEl = []
 let clones = []
+let rps = setRps()
 
 //GAME DYNAMICS VARIABLES
 let soundOn = true
@@ -137,6 +139,7 @@ function restart() {
     }
     constructionsOnFieldEl = []
     clones = []
+    rps = setRps()
 }
 
 function construct() {
@@ -153,6 +156,7 @@ function construct() {
                 buildings[key].total += 1
                 let clone = cloneConstruction(buildings[key])
                 clones.push(clone)
+                addToRp(clone)
                 incomeCalculator(buildings[key])
                 setValues()
                 addToBuildingDisplay(clone)
@@ -459,6 +463,39 @@ function endGame() {
     const finalDataTitle = document.createElement("h1")
     finalDataTitle.textContent = "DADOS FINAIS"
     pointsAreaEl.appendChild(finalDataTitle)
+
+    //Definir disaster Area
+    const disasterDivEl = document.createElement("div")
+    disasterDivEl.id = "disaster-div-el"
+    pointsAreaEl.appendChild(disasterDivEl)
+
+    const disasterAreaTitle = document.createElement("h2")
+    disasterAreaTitle.innerText = "Selecionar Desastres:"
+    disasterDivEl.appendChild(disasterAreaTitle)
+
+    // Adicionar select disaster field 1
+    for (let i = 0; i < 3; i++) {
+        let disasterFieldSelectEl = document.createElement("select")
+        disasterFieldSelectEl.id = `disaster-field-select-el-${i+1}`
+        let disasterKeys = Object.keys(Disasters.disasterList)
+        for (let i = 0; i < Disasters.disasterNumber; i++) {
+            let element = document.createElement("option")
+            element.innerText = `${Disasters.disasterList[disasterKeys[i]].name}`
+            disasterFieldSelectEl.appendChild(element)
+        }
+        let indice = document.createElement("p")
+        indice.innerText = `${i+1}ª Carta:`
+        disasterDivEl.appendChild(indice)
+        disasterDivEl.appendChild(disasterFieldSelectEl)
+    }
+
+    // selecionar button
+    let sendDisasterBtn = document.createElement("button")
+    sendDisasterBtn.innerHTML = "SELECIONAR"
+    sendDisasterBtn.addEventListener("click", function() {
+        alert("Button clicked")
+    })
+    disasterDivEl.appendChild(sendDisasterBtn)
 
     // Pontos gerais (poluição, qualidade de vida, científicos)
     pointsAreaEl.innerHTML += `<h2>ÍNDICES GERAIS DA CIDADE</h2>
@@ -1117,6 +1154,41 @@ function addSoundButton(container) {
         }
     })
     container.appendChild(soundBtn)
+}
+
+function addToRp(building) {
+    let area = document.getElementById("area-input-el").value
+    if (area == "1") {
+        rps.um.push(building)
+    } else if (area == "2") {
+        rps.dois.push(building)
+    } else if (area == "3") {
+        rps.tres.push(building)
+    } else if (area == "4") {
+        rps.quatro.push(building)
+    } else if (area == "5") {
+        rps.cinco.push(building)
+    } else if (area == "6") {
+        rps.seis.push(building)
+    } else if (area == "7") {
+        rps.sete.push(building)
+    } else {
+        alert("Erro")
+    }
+    console.log(rps)
+}
+
+function setRps() {
+    let c = {
+        um: [],
+        dois: [],
+        tres: [],
+        quatro: [],
+        cinco: [],
+        seis: [],
+        sete: []
+    }
+    return c
 }
 
 //GAME PROCEDURE

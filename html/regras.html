@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="../style/style-regras.css">
     <title>Regras</title>
 </head>
 <body>
     <header>
         <button><a href="../index.html">INÍCIO</a></button>
+        <!--
         <nav id="menu-regras">
             <ul>
                 <li>Como Jogar</li>
@@ -17,18 +19,44 @@
                 <li>Lista de Desastres</li>
             </ul>
         </nav>
+        -->
     </header>
     <main>
+        <div>
+            <h2>Vídeo Tutorial:</h2>
+            <iframe width="350" height="210" src="https://www.youtube.com/embed/LoVXjNJmPOM" title="ECO Recife: A Jornada dos ODS" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <br>
+        </div>
+
         <article>
-            <h2>Como Jogar</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores eum veniam voluptatem nesciunt sint assumenda quibusdam consequatur voluptas atque corrupti dolorum, blanditiis modi pariatur sit quae illum qui maxime nobis!</p>
+            <h2>Sobre o Jogo:</h2>
+            <p>Neste jogo, os participantes atuam de maneira colaborativa, como equipe, desenvolvendo uma cidade para garantir à população bons índices e evitar um desastre que se aproxima. É preciso pensar em maneiras sustentáveis de prover alimentação, recursos energéticos, avanço industrial e tecnológico, sem esquecer do bom manejo do meio ambiente e da qualidade de vida. Para isso, a equipe de quatro participantes se divide em funções, cada um assumindo um personagem:</p>
         </article>
         <article>
             <h2>Personagens</h2>
-            <h3>A Prefeitura</h3>
-            <h3>Diretores de Desenvolvimento</h3>
+            <h3>A Cidade:</h3>
+            <p>Cabe a este personagem guiar os demais na jornada de desenvolvimento sustentável. O jogador que detém essa carta precisa lidar com as consequências das ações e mecanismos do jogo, distribuindo os recursos a cada rodada e calculando os rendimentos de cada construção.</p>
+            <h3>A Prefeitura:</h3>
+            <p> Cuida da parte estrutural da cidade, garantindo o bem-estar da população, o desenvolvimento industrial e tecnológico. Suas construções contribuem principalmente para a infraestrutura.</p>
+            <h3>Diretores de Recursos Humanos</h3>
+            <p>Trabalham pelo desenvolvimento social, atuando para garantir à população serviços básicos. Suas construções são responsáveis por garantir pontos de qualidade de vida e aumentar a mão de obra disponível na cidade.</p>
             <h3>Diretores Financeiros</h3>
+            <p>Trabalham pelo desenvolvimento financeiro e industrial da cidade, garantindo a sustentabilidade econômica e gerando créditos em metais preciosos. Suas construções se baseiam em fábricas e polos tecnológicos.</p>
         </article>
+
+        </article>
+            <h2>Preparando o Jogo:</h2>
+            <ol>
+                <li>Os jogadores sentam em volta do tabuleiro.</li>
+                <li>Divide-se as cartas em 4 pilhas: O baralho de cartas desastre (verso vermelho); O baralho de personagens (verso azul); o baralho das construções (verso cinza).</li>
+                <li>Sem olhar, os jogadores tiram uma carta do baralho de personagem, determinando assim com qual deles irá jogar.</li>
+                <li>Uma vez que os personagens tenham sido escolhidos, o jogador que possui a carta A Cidade se encarrega da condução do jogo. Cabe a ele a administração do baralho de melhorias e a posse dos créditos.</li>
+                <li>A cidade embaralha as cartas desastre e tira três do baralho, deixando-as sobre a mesa, viradas para baixo. Essas cartas só serão reveladas posteriormente a partir de condições específicas.</li>
+                <li>O personagem A Cidade entrega aos demais os recursos determinados em suas cartas.</li>
+                <li>Em seguida, A Cidade divide o baralho de construções entre os outros da forma descrita na tabela. Essa divisão representa o tipo de construção que cada personagem tem o poder de desenvolver.</li>
+            </ol>
+        <article>
+
         <article id="deck-el">
             <h2>Decks</h2>
             <h3>Prefeitura</h3>
@@ -37,11 +65,48 @@
             <div id="recursosH-deck-el"></div>
             <h3>Diretores de Recursos Financeiros</h3>
             <div id="recursosF-deck-el"></div>
-        </article>
-        <article>
+        
             <h2>Lista de Desastres</h2>
+            <div id="lista-desastres-el"></div>
         </article>
     </main>
+
+        <article>
+            <h2>Como Jogar:</h2>
+            <ol>
+                <li>O jogador sentado à direita do personagem A Cidade começa. Esse primeiro jogador usa dos seus recursos iniciais para fazer seus primeiros investimentos, pagando a Cidade em metais preciosos pelas construções que escolheu. Para isso, usa os bottons para representar a construção na área desejada. Em seguida, pode usar dos créditos de mão de obra para fazer melhorias nas construções em campo. Quando decide parar de investir/melhorar ou não tem mais recursos, passa a vez para o jogador à sua direita. O processo se repete até que os três tenham jogado e assim a rodada termina. A Cidade então marca a rodada como encerrada..</li>
+                <li>Na segunda rodada, o personagem A Cidade calcula os rendimentos das construções no tabuleiro e entrega os recursos em forma de crédito aos jogadores. É recomendado anotar a soma dos rendimentos de cada um a cada rodada para facilitar a dinâmica do jogo ou usar o aplicativo calculadora desenvolvido para o jogo. Atentar-se para antes de que qualquer um possa fazer suas jogadas e efetuar mudanças no tabuleiro, o personagem cidade deve distribuir aos jogadores seus rendimentos.</li>
+                <li>Quando a décima rodada termina, o jogador A cidade revela as cartas desastre selecionadas no início da partida. Caso as construções no tabuleiro não cumpram os requisitos para evitar o desastre, os jogadores perdem. Caso tenham investimentos suficientes nas áreas corretas para resistir à catástrofe, vencem o jogo.</li>
+            </ol>
+        </article>
+
+        <article>
+            <h2>Regras Especiais</h2>
+            <h3>Cartas Desastre:</h3>
+            <p>É possível descobrir as cartas desastres em qualquer rodada anterior a última, desde que as construções acumulem um determinado número de pontos científicos:</p>
+            <ul>
+                <li>3 para virar a primeira carta</li>
+                <li>6 para virar a segunda carta</li>
+                <li>12 para virar a terceira carta</li>
+            </ul>
+            <h3>Doações e Trocas:</h3>
+            <p>Aos jogadores “Diretores de Recursos Humanos” e “Diretores Financeiros”, é permitida a troca de créditos, desde que não haja doação de recursos. Apenas o prefeito pode fazer repasse de recursos sem um pagamento (1 para 1) em troca.</p>
+            <h3>Melhorias</h3>
+            <p>Com os créditos de mão de obra, é possível adquirir cartas de melhoria. Cada melhoria representa um bônus para as construções, que podem atingir até o nível 5.</p>
+            <ul>
+                <li>Melhoria nível 2: custa 5 pontos de mão de obra e oferece + 3 rendimentos.</li>
+                <li>Melhoria nível 3: custa 10 pontos de mão de obra e oferece + 5 rendimentos.</li>
+                <li>Melhoria nível 4: custa 15 pontos de mão de obra e oferece + 8 rendimentos.</li>
+                <li>Melhoria nível 5: custa 20 pontos de mão de obra e oferece + 10 rendimentos.</li>
+            </ul>
+            <p>As cartas melhorias são empregadas nas cartas de construção já em campo e só podem ser aplicadas no que já foi construído. Para aplicar uma carta melhoria de nível maior, é necessário passar pelos níveis anteriores. Assim, só é possível usar uma carta melhoria nível 5 em uma carta construção que tenha recebido uma melhoria de nível  2, 3 e 4 anteriormente.</p>
+            <p>O bônus da carta melhoria de nível 2+  considera apenas o valor original da carta construção. Não é permitido o acúmulo de melhorias.</p>
+            <h3>Pontos Especiais:</h3>
+            <p>Pontos de poluição, qualidade de vida e científicos só são obrigatoriamente contados no fim do jogo, caso a carta desastre exija. Porém, é recomendado que os jogadores mantenham registro dessas pontuações para melhor planejamento.</p>
+            <h3>RPs</h3>
+            <p>É obrigatório seguir a indicação de preço de construção descrita nas cartas, respeitando a diferença de valores que depende da RP. Caso uma construção não especifique o preço em determinada área, significa que a construção não pode ser colocada lá.</p>
+        </article>
+
     <footer>
         <p><a href="https://github.com/luizsilva25/ascending_app" target="_blank">Github Repository</a></p>
     </footer>
